@@ -1,0 +1,241 @@
+nav {
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1000;
+    background-image: url("/assets/fondo-navbar2.png");
+    background-repeat: no-repeat;
+    border-bottom: 5px solid rgb(129, 186, 61);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* Logo centrado siempre */
+    align-items: center;
+    padding: 10px;
+}
+
+
+.hamburguesa {
+    width: 30px;
+    height: 30px;
+    justify-self: start; /* A la izquierda */
+}
+
+.logo {
+    width: 5.6rem;
+    justify-self: center; /* Centrado */
+}
+
+.lupa-carrito-login {
+    display: flex;
+    gap: 5px;
+    justify-self: end; /* A la derecha */
+}
+
+#login {
+    display: none;
+}
+
+.lupa,
+.carrito,
+#login {
+    width: 30px;
+}
+
+.hamburguesa,
+.logo,
+.lupa,
+.carrito:hover {
+    cursor: pointer;
+}
+
+.secciones{
+  display: none;
+  position: absolute;
+  list-style: none;
+  width: 100%;
+  gap: 20px;
+  padding: 20px 0;
+  font-size: 20px;
+}
+
+.seccion{
+  align-items: center;
+  border-bottom: 2px solid grey;
+} 
+
+.mostrar-secciones{
+  display: flex;
+  flex-direction: column;
+} 
+
+.subsecciones{
+  display: none;
+  list-style: none;
+}
+
+.mostrar-subsecciones{
+  display: flex;
+  flex-direction: column;
+}
+
+.equipos{
+  display: none;
+}
+
+.mostrar-equipos{
+  display: flex;
+  flex-direction: column;
+}
+
+.flecha{
+  width: 20px;
+} 
+
+.rotar-flecha{
+  transform: rotate(180deg);
+}
+
+.flecha-derecha{
+  width: 15px;
+}
+
+/* ----------- TABLET ----------- */
+@media screen and (min-width: 650px) {
+    .navbar {
+        padding: 20px;
+    }
+
+    .logo {
+        width: 9rem;
+    }
+
+    .hamburguesa {
+        width: 35px;
+        height: 35px;
+    }
+
+    .lupa-carrito-login img {
+        width: 35px;
+    }
+
+    .lupa-carrito-login {
+        gap: 2px;
+    }
+
+    #login {
+        display: flex;
+    }
+
+    #login:hover {
+        cursor: pointer;
+    }
+}
+
+/* ----------- ESCRITORIO ----------- */
+/*@media screen and (min-width: 1000px) {
+  .hamburguesa {
+    display: none;
+  }
+
+  .navbar {
+    position: relative;
+    display: flex;         
+    align-items: center;
+    justify-content: space-between; 
+    padding: 20px;
+  }
+
+  .lupa-carrito-login .lupa {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  
+  .logo {
+    margin: 0 auto;
+    width: 9rem;
+  }
+
+ 
+  .lupa-carrito-login {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .secciones{
+    display: flex;             
+    justify-content: center;   
+    gap: 60px;                 
+    padding: 10px 20px;        
+    margin: 0;                 
+    list-style: none;           
+    color: whitesmoke;
+  }
+
+  .seccion{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .flecha{
+    width: 15px;
+  }
+
+  .flecha-derecha{
+    width: 10px;
+  }
+
+  .subsecciones{
+    display: none;
+    position: absolute;
+    top: 100%; 
+    left: -20px;
+    background-color: rgb(129, 186, 61);
+    color: rgb(30, 38, 49);
+    list-style: none;
+    padding: 20px;
+    width: 130px;
+    border-radius: 15px;
+    gap: 15px;
+    z-index: 200;
+  }
+
+  .seccion:hover .subsecciones{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .equipos{
+    display: none;
+    list-style: none;
+    position: absolute;
+    left: 85%;
+    width: 160px;
+    background-color:rgb(129, 186, 61) ;
+    color: rgb(30, 38, 49);
+    border-radius: 15px;
+    gap: 5px;
+    padding: 20px;
+    top: 0%;
+    margin-left: -1px;
+  }
+
+  .liga:hover .equipos{
+    display: flex;
+    flex-direction: column;
+  } 
+
+
+}*/
+
+
