@@ -64,58 +64,74 @@ export class Header implements OnInit {
 
 import { Component } from '@angular/core';
 
-interface Equipo{
-  nombre:string
-}
-
-interface Liga {
-  nombre: string;
-  equipos: Equipo[];
-  abierta?: boolean;
-}
-
-interface Seccion {
-  nombre: string;
-  ligas?: Liga[];
-  abierta?: boolean;
-}
+interface Equipo { nombre: string }
+interface Liga { nombre: string; equipos: Equipo[]; abierta?: boolean; }
+interface Seccion { nombre: string; ligas?: Liga[]; abierta?: boolean; }
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrl: './header.css',
+  imports: []
 })
-export class Header{
+export class Header {
   mostrarMenu = false;
-  secciones:Seccion[] = [];
+  secciones: Seccion[] = [];
 
-  constructor(){
-    // Estructura del menú
+  constructor() {
     this.secciones = [
       {
         nombre: "Clubes 25/26",
         ligas: [
-          {
-            nombre:"LaLiga",
-            equipos : [
-              { nombre: 'FC Barcelona' },
-              { nombre: 'Real Madrid' },
-              { nombre: 'Atlético de Madrid' },
-            ]
-          },
-          {
-            nombre: 'Premier League',
-            equipos: [
-              { nombre: 'Arsenal FC' },
-              { nombre: 'Liverpool FC' },
-              { nombre: 'Manchester City FC' },
-            ]
-          }
+          { nombre: "LaLiga", equipos: [
+            { nombre: 'FC Barcelona' },
+            { nombre: 'Real Madrid' },
+            { nombre: 'Atlético de Madrid' },
+          ]},
+          { nombre: "Premier League", equipos: [
+            { nombre: 'Arsenal FC' },
+            { nombre: 'Liverpool FC' },
+            { nombre: 'Manchester City FC' },
+          ]},
+          { nombre: "Serie A", equipos: [
+            { nombre: 'Inter Milán' },
+            { nombre: 'Juventus' },
+            { nombre: 'Roma' },
+          ]}
         ]
-      }
-    ]
+      },
+      {
+        nombre: "Selecciones 25/26",
+        ligas: [
+          { nombre: 'España', equipos: [] },
+          { nombre: 'Brasil', equipos: [] },
+          { nombre: 'Argentina', equipos: [] }
+        ]
+      },
+      { nombre: 'Camisetas Retro' },
+      { nombre: 'Cajas Sorpresa' }
+    ];
   }
- 
+
+  toggleMenu() {
+    this.mostrarMenu = !this.mostrarMenu;
+    
+  }
+
+
+  toggleSeccion(seccion: Seccion) {
+    this.secciones.forEach(s => {
+      if (s !== seccion) s.abierta = false;
+    });
+    seccion.abierta = !seccion.abierta;
+  }
+
+  toggleLiga(seccion: Seccion, liga: Liga) {
+    seccion.ligas?.forEach(l => {
+      if (l !== liga) l.abierta = false;
+    });
+    liga.abierta = !liga.abierta;
+  }
 }
 
 
