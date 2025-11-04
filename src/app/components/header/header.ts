@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+/*import { Component, AfterViewInit, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -17,9 +17,9 @@ export class Header implements OnInit {
       secciones?.classList.toggle("mostrar-secciones");
 
       if(secciones?.classList.contains("mostrar-secciones")){
-        menu.src = "assets/x.png"
+        menu.src = "assets/x.png";
       }else{
-        menu.src = "assets/menu-de-hamburguesas.png"
+        menu.src = "assets/menu-de-hamburguesas.png";
       }
     });
 
@@ -42,19 +42,86 @@ export class Header implements OnInit {
 
     // MOSTRAR EQUIPOS
   
-    const subsecciones = document.querySelectorAll(".subsecciones");
+    const ligas = document.querySelectorAll(".liga");
 
-    subsecciones.forEach(subseccion => {
-      subseccion.addEventListener("click",()=>{
-        const equipos = subseccion.querySelector(".equipos");
-        const flechaDerecha = subseccion.querySelector(".flecha-derecha");
+    ligas.forEach(liga => {
+      liga.addEventListener("click",(event)=>{
+        event.stopPropagation(); // evita que el click burbujee hacia .subsecciones
+        const equipos = liga.querySelector(".equipos");
+        const flechaDerecha = liga.querySelector(".flecha-derecha");
         if(equipos){
           equipos.classList.toggle("mostrar-equipos");
-          flechaDerecha?.classList.toggle("rotar-flecha");
+          flechaDerecha?.classList.toggle("rotar-flecha270deg");
         }
       })
     });
 
   }
+}*/
+
+
+
+
+import { Component } from '@angular/core';
+
+interface Equipo{
+  nombre:string
 }
+
+interface Liga {
+  nombre: string;
+  equipos: Equipo[];
+  abierta?: boolean;
+}
+
+interface Seccion {
+  nombre: string;
+  ligas?: Liga[];
+  abierta?: boolean;
+}
+
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.html',
+  styleUrl: './header.css'
+})
+export class Header{
+  mostrarMenu = false;
+  secciones:Seccion[] = [];
+
+  constructor(){
+    // Estructura del menú
+    this.secciones = [
+      {
+        nombre: "Clubes 25/26",
+        ligas: [
+          {
+            nombre:"LaLiga",
+            equipos : [
+              { nombre: 'FC Barcelona' },
+              { nombre: 'Real Madrid' },
+              { nombre: 'Atlético de Madrid' },
+            ]
+          },
+          {
+            nombre: 'Premier League',
+            equipos: [
+              { nombre: 'Arsenal FC' },
+              { nombre: 'Liverpool FC' },
+              { nombre: 'Manchester City FC' },
+            ]
+          }
+        ]
+      }
+    ]
+  }
+ 
+}
+
+
+
+
+
+
+
 
