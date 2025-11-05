@@ -77,6 +77,8 @@ interface Seccion { nombre: string; ligas?: Liga[]; abierta?: boolean; }
 export class Header {
   mostrarMenu = false;
   secciones: Seccion[] = [];
+  mostrarBuscador = false;
+  mostrarCarrito = false;
 
   constructor() {
     this.secciones = [
@@ -115,7 +117,8 @@ export class Header {
 
   toggleMenu() {
     this.mostrarMenu = !this.mostrarMenu;
-    
+    this.mostrarBuscador = false 
+    this.mostrarCarrito = false
   }
 
 
@@ -132,6 +135,20 @@ export class Header {
     });
     liga.abierta = !liga.abierta;
   }
+
+  toggleBuscador(){
+    this.mostrarBuscador = !this.mostrarBuscador
+    this.mostrarMenu = false 
+    this.mostrarCarrito = false
+  }
+
+  toggleCarrito(){
+    this.mostrarCarrito = !this.mostrarCarrito
+    this.mostrarBuscador = false 
+    this.mostrarMenu = false
+  }
+
+ 
 }
 
 

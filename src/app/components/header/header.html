@@ -162,10 +162,30 @@
     <img class="logo" src="assets/logo-camis.png" alt="logo web">
     <div class="lupa-carrito-login">
       <img id="login" src="assets/login.png" alt="login">
-      <img class="lupa" src="assets/lupa.png" alt="lupa">
-      <img class="carrito" src="assets/carrito.png" alt="carrito">
+      <img class="lupa" src="assets/lupa.png" alt="lupa" (click)="toggleBuscador()">
+      <img class="carrito" src="assets/carrito.png" alt="carrito" (click)="toggleCarrito()">
     </div> 
   </div>
+
+  <!-- Cuadro de búsqueda -->
+   @if(mostrarBuscador){
+    <div class="buscador">
+      <input type="text" placeholder="Buscar equipos, ligas, camisetas...">
+      <input type="button" value="Buscar">
+    </div>
+   }
+
+   <!-- Carrito -->
+    @if(mostrarCarrito){
+      <div class="vista-carrito">
+        <div>
+          <h2>Carrito</h2>
+          <img src="assets/x-negra.png" alt="x negra">
+        </div>
+        <img src="assets/carrito-vacio.png" alt="carrito vacio">
+        <h3>Su carrito esta vacío.</h3>
+      </div>
+    }
 
   <ul class="secciones" [class.mostrar-secciones]="mostrarMenu">
     @for (seccion of secciones; track seccion) {
@@ -185,7 +205,8 @@
         @if (seccion.ligas && seccion.abierta) {
           <ul class="subsecciones mostrar-subsecciones">
             @for (liga of seccion.ligas; track liga) {
-              <li class="liga" (click)="toggleLiga(seccion, liga)">
+              <li class="liga">
+                <div (click)="toggleLiga(seccion, liga)">
                 {{ liga.nombre }}
 
                 @if (liga.equipos.length) {
@@ -195,12 +216,13 @@
                     [class.rotar-flecha270deg]="liga.abierta"
                     alt="flecha derecha">
                 }
+                </div>
 
                 <!-- Equipos -->
                 @if (liga.equipos.length && liga.abierta) {
                   <ul class="equipos mostrar-equipos">
                     @for (equipo of liga.equipos; track equipo) {
-                      <li>{{ equipo.nombre }}</li>
+                      <li><a class="equipo" href="#">{{ equipo.nombre }}</a></li>
                     }
                   </ul>
                 }
