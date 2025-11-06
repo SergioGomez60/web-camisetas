@@ -169,21 +169,24 @@
 
   <!-- Cuadro de búsqueda -->
    @if(mostrarBuscador){
-    <div class="buscador">
-      <input type="text" placeholder="Buscar equipos, ligas, camisetas...">
-      <input type="button" value="Buscar">
-    </div>
+      <div class="buscador">
+        <input class="buscar" type="text" placeholder="Buscar camisetas,cajas,etc..">
+        <img (click)="toggleBuscador()" class="x-negra" src="assets/x-negra.png" alt="x negra">
+      </div>
    }
 
    <!-- Carrito -->
     @if(mostrarCarrito){
       <div class="vista-carrito">
-        <div>
+        <div class="carrito-x">
           <h2>Carrito</h2>
-          <img src="assets/x-negra.png" alt="x negra">
+          <img (click)="toggleCarrito()" src="assets/x-negra.png" alt="x negra">
         </div>
-        <img src="assets/carrito-vacio.png" alt="carrito vacio">
+        <div class="carr-tex-bot">
+        <img class="carrito-vacio" src="assets/carrito-vacio.png" alt="carrito vacio">
         <h3>Su carrito esta vacío.</h3>
+        <button class="boton-comprar">Empieza a comprar</button>
+        </div>
       </div>
     }
 
