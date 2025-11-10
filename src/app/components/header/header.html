@@ -1,4 +1,4 @@
-<nav>
+<!-- <nav>
     <div class="navbar">
         <img class="hamburguesa" src="assets/menu-de-hamburguesas.png" alt="Menu hamburguesa">
         <img class="logo" src="assets/logo-camis.png" alt="logo web">
@@ -146,4 +146,94 @@
 </nav>
   
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script> -->
+
+
+
+
+
+<nav>
+  <div class="navbar">
+    @if (!mostrarMenu) {
+      <img class="hamburguesa" src="assets/menu-de-hamburguesas.png" alt="hamburguesa" (click)="toggleMenu()">
+    } @else {
+      <img class="hamburguesa" src="assets/x.png" alt="X" (click)="toggleMenu()">
+    }
+    <img class="logo" src="assets/logo-camis.png" alt="logo web">
+    <div class="lupa-carrito-login">
+      <img id="login" src="assets/login.png" alt="login">
+      <img class="lupa" src="assets/lupa.png" alt="lupa" (click)="toggleBuscador()">
+      <img class="carrito" src="assets/carrito.png" alt="carrito" (click)="toggleCarrito()">
+    </div> 
+  </div>
+
+  <!-- Cuadro de búsqueda -->
+   @if(mostrarBuscador){
+      <div class="buscador">
+        <input class="buscar" type="text" placeholder="Buscar camisetas,cajas,etc..">
+        <img (click)="toggleBuscador()" class="x-negra" src="assets/x-negra.png" alt="x negra">
+      </div>
+   }
+
+   <!-- Carrito -->
+    @if(mostrarCarrito){
+      <div class="vista-carrito">
+        <div class="carrito-x">
+          <h2>Carrito</h2>
+          <img (click)="toggleCarrito()" src="assets/x-negra.png" alt="x negra">
+        </div>
+        <div class="carr-tex-bot">
+        <img class="carrito-vacio" src="assets/carrito-vacio.png" alt="carrito vacio">
+        <h3>Su carrito esta vacío.</h3>
+        <button class="boton-comprar">Empieza a comprar</button>
+        </div>
+      </div>
+    }
+
+  <ul class="secciones" [class.mostrar-secciones]="mostrarMenu">
+    @for (seccion of secciones; track seccion) {
+      <li class="seccion">
+        <div (click)="toggleSeccion(seccion)">
+          {{ seccion.nombre }}
+          @if (seccion.ligas) {
+            <img 
+              class="flecha"
+              src="assets/flecha.png"
+              [class.rotar-flecha]="seccion.abierta"
+              alt="flecha">
+          }
+        </div>
+
+        <!-- Subsecciones (ligas) -->
+        @if (seccion.ligas && seccion.abierta) {
+          <ul class="subsecciones mostrar-subsecciones">
+            @for (liga of seccion.ligas; track liga) {
+              <li class="liga">
+                <div (click)="toggleLiga(seccion, liga)">
+                {{ liga.nombre }}
+
+                @if (liga.equipos.length) {
+                  <img 
+                    class="flecha-derecha"
+                    src="assets/flecha-derecha.png"
+                    [class.rotar-flecha270deg]="liga.abierta"
+                    alt="flecha derecha">
+                }
+                </div>
+
+                <!-- Equipos -->
+                @if (liga.equipos.length && liga.abierta) {
+                  <ul class="equipos mostrar-equipos">
+                    @for (equipo of liga.equipos; track equipo) {
+                      <li><a class="equipo" href="#">{{ equipo.nombre }}</a></li>
+                    }
+                  </ul>
+                }
+              </li>
+            }
+          </ul>
+        }
+      </li>
+    }
+  </ul>
+</nav>
