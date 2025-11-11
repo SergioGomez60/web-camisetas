@@ -191,7 +191,7 @@
     }
 
   <ul class="secciones" [class.mostrar-secciones]="mostrarMenu">
-    @for (seccion of secciones; track seccion) {
+    @for (seccion of secciones; track $index) {
       <li class="seccion">
         <div (click)="toggleSeccion(seccion)">
           {{ seccion.nombre }}

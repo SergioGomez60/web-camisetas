@@ -136,8 +136,8 @@ nav {
   margin-top: 10px;
   border-radius: 15px;
   height: auto;
-  top: 0;
   border: 2px solid grey;
+  top: 0;
 }
 
 .carrito-vacio{
@@ -181,7 +181,6 @@ nav {
   justify-content: space-between;
   position: absolute;
   margin: 0 auto;
-  top: 0;
   background-color: rgb(255, 255, 255);
   align-items: center;
   width: 100%;
@@ -233,10 +232,15 @@ nav {
     #login:hover {
         cursor: pointer;
     }
+
+    .buscador{
+      justify-content: center;
+      gap:10px;
+    }
 }
 
 /* ----------- ESCRITORIO ----------- */
-/*@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1000px) {
   .hamburguesa {
     display: none;
   }
@@ -270,13 +274,14 @@ nav {
   }
 
   .secciones{
+    position: relative;
     display: flex;             
     justify-content: center;   
-    gap: 60px;                 
     padding: 10px 20px;        
     margin: 0;                 
     list-style: none;           
     color: whitesmoke;
+    gap: 30px;
   }
 
   .seccion{
@@ -285,6 +290,8 @@ nav {
     gap: 5px;
     position: relative;
     cursor: pointer;
+    border: none;
+    font-size: 18px;
   }
 
   .flecha{
@@ -295,8 +302,13 @@ nav {
     width: 10px;
   }
 
+  .rotar-flecha270deg{
+    transform: rotate(180deg);
+  }
+
   .subsecciones{
-    display: none;
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 100%; 
     left: -20px;
@@ -304,22 +316,17 @@ nav {
     color: rgb(30, 38, 49);
     list-style: none;
     padding: 20px;
-    width: 130px;
+    width: 150px;
     border-radius: 15px;
     gap: 15px;
-    z-index: 200;
-  }
-
-  .seccion:hover .subsecciones{
-    display: flex;
-    flex-direction: column;
   }
 
   .equipos{
-    display: none;
+    display: flex;
+    flex-direction: column;
     list-style: none;
     position: absolute;
-    left: 85%;
+    left: 100%;
     width: 160px;
     background-color:rgb(129, 186, 61) ;
     color: rgb(30, 38, 49);
@@ -327,15 +334,18 @@ nav {
     gap: 5px;
     padding: 20px;
     top: 0%;
-    margin-left: -1px;
+    
   }
 
-  .liga:hover .equipos{
-    display: flex;
-    flex-direction: column;
-  } 
+  .vista-carrito{
+    z-index: 800;
+  }
+
+  .buscador{
+    z-index: 800;
+  }
 
 
-}*/
+}
 
 

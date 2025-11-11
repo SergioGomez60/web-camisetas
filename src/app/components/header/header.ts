@@ -123,10 +123,8 @@ export class Header {
 
 
   toggleSeccion(seccion: Seccion) {
-    this.secciones.forEach(s => {
-      if (s !== seccion) s.abierta = false;
-    });
-    seccion.abierta = !seccion.abierta;
+      this.secciones.forEach(s => { if (s !== seccion) s.abierta = false; });
+      seccion.abierta = !seccion.abierta;
   }
 
   toggleLiga(seccion: Seccion, liga: Liga) {
