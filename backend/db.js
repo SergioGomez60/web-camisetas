@@ -8,4 +8,4 @@ const conexiondb = mysql.createPool({
   database: process.env.DB_NAME,
 });
 
-export const promiseConexion = conexiondb.promise();
+export const promiseConexion = conexiondb.promise(); // exporta en forma de promesa (promiseConexion) para que luego puedas usar await en tus consultas.
