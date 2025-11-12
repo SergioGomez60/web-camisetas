@@ -2,7 +2,8 @@ nav {
     width: 100%;
     top: 0;
     left: 0;
-    position: fixed;
+    width: 100%;
+    position: sticky;
     z-index: 1000;
     background-image: url("/assets/fondo-navbar2.png");
     background-repeat: no-repeat;
@@ -102,6 +103,14 @@ nav {
 .mostrar-equipos{
   display: flex;
   flex-direction: column;
+  overflow-y: auto;   /* habilita scroll vertical */
+  max-height: 300px;
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE y Edge */
+}
+
+.mostrar-equipos::-webkit-scrollbar {
+  display: none;           /* Chrome, Safari y Opera */
 }
 
 .flecha{
