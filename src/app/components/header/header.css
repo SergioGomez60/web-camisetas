@@ -8,7 +8,7 @@ nav {
     background-image: url("/assets/fondo-navbar2.png");
     background-repeat: no-repeat;
     border-bottom: 5px solid rgb(129, 186, 61);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .navbar {
@@ -78,6 +78,7 @@ nav {
 .mostrar-secciones{
   display: flex;
   flex-direction: column;
+  background-color: white;
 } 
 
 .subsecciones{

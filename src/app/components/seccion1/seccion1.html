@@ -1,3 +1,15 @@
-<section>
-    <h3>CAMISETAS OFICIALES 100% ORIGINALES</h3>
+<section class="seccion1">
+    <h3 class="texto1">CAMISETAS OFICIALES 100% ORIGINALES <img class="verificado" src="assets/verificado.png" alt="verificado"></h3>
+    <h2 class="texto2">TOP VENTAS</h2>
+    <div class="camisetas">
+        @if(camisetas.length > 0){
+            @for (camiseta of camisetas; track camiseta.equipo) {
+                <div class="camiseta">
+                    <img [src]="camiseta.imagen" [alt]="camiseta.equipo">
+                    <h3>{{ camiseta.descripcion }}</h3>
+                    <p>{{ camiseta.precio }}€</p>
+                </div>
+            }
+        }
+    </div>
 </section>

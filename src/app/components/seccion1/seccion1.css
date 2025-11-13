@@ -1,0 +1,53 @@
+.seccion1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.texto1{
+    text-align: center;
+    font-size: 18px;
+    color: rgb(34, 47, 65);
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.verificado{
+    width: 17px;
+}
+
+.texto2{
+    text-align: center;
+    color: rgb(34, 47, 65);
+    margin-top: 30px;
+}
+
+.camisetas{
+    display: grid;
+    grid-template-columns: 150px 150px;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 15px;
+}
+
+.camiseta{
+    
+}
+
+.camiseta img{
+    width: 160px;
+    height: 160px;
+    border-radius: 20px;
+}
+
+.camiseta h3{
+    font-size: 13px;
+    text-align: center;
+}
+
+.camiseta p{
+    font-size: 15px;
+    text-align: center;
+}
+
