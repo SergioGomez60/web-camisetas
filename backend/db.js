@@ -1,7 +1,9 @@
 import mysql from "mysql2";
-import 'dotenv/config'; // Para importar los datos del .env
+import dotenv from "dotenv"; // Para importar los datos del .env
 
-const conexiondb = mysql.createPool({
+dotenv.config(); // Carga las variables definidas en tu archivo .env
+
+const conexiondb = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
