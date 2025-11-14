@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { promiseConexion } from "../db.js";
+import bcrypt from "bcryptjs";
 
 const router = Router();
 
@@ -13,6 +14,14 @@ router.get("/", async (req,res) =>{
         res.status(500).json({ message: "Error al obtener usuarios" });
     }
     
+})
+
+router.post("/usuarios",async (req,res)=>{
+    try{
+        const {name,email,password} = req.body
+    }catch{
+
+    }
 })
 
 export default router;
