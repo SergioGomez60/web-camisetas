@@ -63,6 +63,7 @@ export class Header implements OnInit {
 
 
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface Equipo { nombre: string }
 interface Liga { nombre: string; equipos: Equipo[]; abierta?: boolean; }
@@ -80,7 +81,7 @@ export class Header {
   mostrarBuscador = false;
   mostrarCarrito = false;
 
-  constructor() {
+  constructor(private router:Router) {
     this.secciones = [
       {
         nombre: "Clubes 25/26",
@@ -243,6 +244,10 @@ export class Header {
     this.mostrarCarrito = !this.mostrarCarrito
     this.mostrarBuscador = false 
     this.mostrarMenu = false
+  }
+
+  paginaLogin(){
+    this.router.navigate(["/login"]);
   }
 
  

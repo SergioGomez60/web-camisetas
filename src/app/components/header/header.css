@@ -61,6 +61,7 @@ nav {
   gap: 20px;
   padding: 20px 0;
   font-size: 20px;
+  border-bottom: 5px solid grey;
 }
 
 .seccion{
@@ -184,6 +185,7 @@ nav {
   margin-left: 30px;
   margin-right: 30px;
   border-bottom: 2px solid grey;
+  padding: 10px;
 }
 
 .carrito-x img{
@@ -192,7 +194,10 @@ nav {
 }
 
 .carr-tex-bot{
+  display: flex;
+  flex-direction: column;
   padding: 40px;
+  gap: 20px;
 }
 
 .boton-comprar{
@@ -265,6 +270,10 @@ nav {
     .buscador{
       justify-content: center;
       gap:10px;
+    }
+
+    .acceder{
+      display: none;
     }
 }
 
@@ -374,6 +383,9 @@ nav {
     z-index: 800;
   }
 
+  .acceder{
+      display: none;
+    }
 
 }
 
