@@ -2,6 +2,8 @@ import { Router } from "express";
 import { promiseConexion } from "../db.js";
 import bcrypt from "bcryptjs";
 import { validateUser } from "../validaciones/usuarios.js";
+import { validate } from "../middlewares/validate.js";
+
 
 const router = Router();
 
@@ -36,20 +38,20 @@ router.post("/registro",validate(validateUser),async (req,res)=>{
 
 router.post("/login", async (req, res) => {
     try {
-        const { username, password } = req.body;
+        const { email, password } = req.body;
 
-        if (!username || !password) {
+        if (!email || !password) {
             return res.status(400).json({ message: "Faltan datos" });
         }
 
         // Buscar usuario por username
         const [rows] = await promiseConexion.query(
-            "SELECT * FROM users WHERE username = ? LIMIT 1",
+            "SELECT * FROM users WHERE email = ? LIMIT 1",
             [username]
         );
 
         if (rows.length === 0) {
-            return res.status(401).json({ message: "Usuario no encontrado" });
+            return res.status(401).json({ message: "Email no encontrado" });
         }
 
         const user = rows[0];
