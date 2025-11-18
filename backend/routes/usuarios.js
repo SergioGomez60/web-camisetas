@@ -19,7 +19,7 @@ router.get("/", async (req,res) =>{
 
 router.post("/registro",validate(validateUser),async (req,res)=>{
     try{
-        const {name,email,password} = req.body
+        const {username,email,password} = req.body
 
         // Chequeo de email ya registrado
         const [existeEmail] = await promiseConexion.query("SELECT id FROM users WHERE email = ? LIMIT 1", [email]);
@@ -32,6 +32,47 @@ router.post("/registro",validate(validateUser),async (req,res)=>{
         console.error(err);
         res.status(500).json({ message: "Error interno" });
     }
-})
+});
+
+router.post("/login", async (req, res) => {
+    try {
+        const { username, password } = req.body;
+
+        if (!username || !password) {
+            return res.status(400).json({ message: "Faltan datos" });
+        }
+
+        // Buscar usuario por username
+        const [rows] = await promiseConexion.query(
+            "SELECT * FROM users WHERE username = ? LIMIT 1",
+            [username]
+        );
+
+        if (rows.length === 0) {
+            return res.status(401).json({ message: "Usuario no encontrado" });
+        }
+
+        const user = rows[0];
+
+        // Comparar contraseña
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({ message: "Contraseña incorrecta" });
+        }
+
+        res.json({
+            message: "Login correcto",
+            user: {
+                id: user.id,
+                username: user.username,
+                email: user.email
+            }
+        });
+
+    } catch (error) {
+        console.error("❌ Error en login:", error);
+        res.status(500).json({ message: "Error interno" });
+    }
+});
 
 export default router;
