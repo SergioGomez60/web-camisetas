@@ -1,0 +1,14 @@
+<section class="seccion2">
+    <h2 class="titulo-cajas">NUESTRAS CAJAS SORPRESA</h2>
+    <div class="cajas">
+        @if(cajas.length > 0){
+            @for(caja of cajas; track caja.nombre){
+                <div class="caja">
+                    <img [src]="caja.imagen" [alt]="caja.nombre">
+                    <h3>{{ caja.nombre }}</h3>
+                    <p>{{ caja.precio }}€</p>
+                </div>
+            }
+        }
+    </div>
+</section>

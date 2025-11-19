@@ -1,5 +1,6 @@
 .seccion1{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 1px;
 }
 
 .texto1{
@@ -25,14 +26,10 @@
 
 .camisetas{
     display: grid;
-    grid-template-columns: 150px 150px;
+    grid-template-columns: 160px 160px;
     justify-content: center;
     gap: 30px;
-    margin-top: 15px;
-}
-
-.camiseta{
-    
+    margin-top: 20px;
 }
 
 .camiseta img{
@@ -42,7 +39,7 @@
 }
 
 .camiseta h3{
-    font-size: 13px;
+    font-size: 16px;
     text-align: center;
 }
 
@@ -51,3 +48,68 @@
     text-align: center;
 }
 
+
+/* ----------- TABLET ----------- */
+@media screen and (min-width: 650px) {
+    .texto1{
+        font-size: 30px;
+    }
+
+    .verificado{
+        width: 24px;
+    }
+
+    .texto2{
+        font-size: 30px;
+    }
+
+    .camisetas{
+        grid-template-columns: 230px 230px;
+    }
+
+    .camiseta img{
+        width: 230px;
+        height: 230px;
+    }
+
+    .camiseta h3{
+        font-size: 17px;
+    }
+
+    .camiseta p{
+        font-size: 20px;
+    }
+}
+
+
+/* ----------- ESCRITORIO ----------- */
+@media screen and (min-width: 1000px) {
+    .texto1{
+        font-size: 40px;
+    }
+
+    .verificado{
+        width: 30px;
+    }
+
+    .texto2{
+        font-size: 40px;
+    }
+
+    .camisetas{
+        grid-template-columns: 300px 300px;
+    }
+
+    .camiseta img{
+        width: 300px;
+        height: 300px;
+    }
+
+    .camiseta h3{
+        font-size: 22px;
+    }
+
+    .camiseta p{
+        font-size: 24px;
+    }
+}

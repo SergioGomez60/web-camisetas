@@ -193,6 +193,10 @@ nav {
   height: 20px;
 }
 
+.carrito-x img:hover{
+  cursor: pointer;
+}
+
 .carr-tex-bot{
   display: flex;
   flex-direction: column;
@@ -233,6 +237,10 @@ nav {
   width: 20px;
   height: 20px;
   margin-right: 20px;
+}
+
+.x-negra:hover{
+  cursor: pointer;
 }
 
 
@@ -320,6 +328,7 @@ nav {
     list-style: none;           
     color: whitesmoke;
     gap: 30px;
+    border: none;
   }
 
   .seccion{

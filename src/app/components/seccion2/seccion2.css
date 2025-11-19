@@ -1,0 +1,33 @@
+.seccion2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 40px;
+}
+
+.titulo-cajas{
+    text-align: center;
+    color: rgb(34, 47, 65);
+}
+
+.cajas{
+    display: grid;
+    grid-template-columns: 160px 160px;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.caja img{
+    width: 160px;
+    height: 160px;
+    border-radius: 20px;
+}
+
+.caja h3{
+    font-size: 16px;
+    text-align: center;
+}
+
+.caja p{
+    font-size: 15px;
+    text-align: center;
+}
