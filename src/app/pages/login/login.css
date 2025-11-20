@@ -12,6 +12,7 @@
 .formulario-login input{
     padding: 5px;
     border: none;
+    border-radius: 15px;
 }
 
 .iniciar-sesion{
@@ -55,3 +56,76 @@
     cursor: pointer;
 }
 
+
+/* ----------- TABLET ----------- */
+@media screen and (min-width: 650px) {
+    .formulario-login{
+        width: 50%;
+        gap: 15px;
+        font-size: 25px;
+    }
+
+    .formulario-login input{
+        padding: 8px;
+    }
+
+    .iniciar-sesion{
+        width: 60%;
+        font-size: 15px;
+    }
+
+    .logo{
+        width: 230px;
+        margin-top: 140px;
+    }
+
+    .enlace-registro{
+        font-size: 18px;
+    }
+
+    .boton-registro{
+        font-size: 15px;
+    }
+}
+
+
+/* ----------- PORTATIL ----------- */
+@media screen and (min-width: 1000px) {
+    .formulario-login{
+        width: 30%;
+        gap: 15px;
+        font-size: 25px;
+    }
+
+    .formulario-login input{
+        padding: 8px;
+    }
+
+    .iniciar-sesion{
+        width: 60%;
+        font-size: 15px;
+    }
+
+    .logo{
+        width: 210px;
+        margin-top: 80px;
+    }
+}
+
+
+/* ----------- MONITOR ----------- */
+@media screen and (min-width: 1400px) {
+    .formulario-login{
+        width: 20%;
+        gap: 20px;
+    }
+
+    .iniciar-sesion{
+        width: 40%;
+    }
+
+    .logo{
+        width: 250px;
+        margin-top: 240px;
+    }
+}

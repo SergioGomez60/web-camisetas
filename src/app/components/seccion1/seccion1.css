@@ -24,6 +24,10 @@
     margin-top: 30px;
 }
 
+.camiseta:hover{
+    cursor: pointer;
+}
+
 .camisetas{
     display: grid;
     grid-template-columns: 160px 160px;
@@ -82,7 +86,7 @@
 }
 
 
-/* ----------- ESCRITORIO ----------- */
+/* ----------- PORTATIL ----------- */
 @media screen and (min-width: 1000px) {
     .texto1{
         font-size: 40px;
@@ -111,5 +115,38 @@
 
     .camiseta p{
         font-size: 24px;
+    }
+}
+
+
+/* ----------- MONITOR ----------- */
+@media screen and (min-width: 1400px) {
+    .texto1{
+        font-size: 60px;
+    }
+
+    .verificado{
+        width: 45px;
+    }
+
+    .texto2{
+        font-size: 60px;
+    }
+
+    .camisetas{
+        grid-template-columns: 500px 500px;
+    }
+
+    .camiseta img{
+        width: 500px;
+        height: 500px;
+    }
+
+    .camiseta h3{
+        font-size: 35px;
+    }
+
+    .camiseta p{
+        font-size: 34px;
     }
 }
