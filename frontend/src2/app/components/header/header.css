@@ -1,0 +1,401 @@
+nav {
+    width: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: sticky;
+    z-index: 1000;
+    background-image: url("/assets/fondo-navbar2.png");
+    background-repeat: no-repeat;
+    border-bottom: 5px solid rgb(129, 186, 61);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.navbar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* Logo centrado siempre */
+    align-items: center;
+    padding: 10px;
+}
+
+
+.hamburguesa {
+    width: 30px;
+    height: 30px;
+    justify-self: start; /* A la izquierda */
+}
+
+.logo {
+    width: 5.6rem;
+    justify-self: center; /* Centrado */
+}
+
+.lupa-carrito-login {
+    display: flex;
+    gap: 5px;
+    justify-self: end; /* A la derecha */
+}
+
+#login {
+    display: none;
+}
+
+.lupa,
+.carrito,
+#login {
+    width: 30px;
+}
+
+.hamburguesa,
+.logo,
+.lupa,
+.carrito:hover {
+    cursor: pointer;
+}
+
+.secciones{
+  display: none;
+  position: absolute;
+  list-style: none;
+  width: 100%;
+  gap: 20px;
+  padding: 20px 0;
+  font-size: 20px;
+  border-bottom: 5px solid grey;
+}
+
+.seccion{
+  align-items: center;
+  border-bottom: 2px solid grey;
+  font-size: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+} 
+
+.seccion,.ligas,.equipos:hover{
+  cursor: pointer;
+}
+
+.mostrar-secciones{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+} 
+
+.subsecciones{
+  display: none;
+  list-style: none;
+}
+
+.mostrar-subsecciones{
+  display: flex;
+  flex-direction: column;
+}
+
+.equipos{
+  display: none;
+  list-style: none;
+}
+
+.equipo{
+  text-decoration: none;
+  color: black;
+}
+
+.mostrar-equipos{
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;   /* habilita scroll vertical */
+  max-height: 300px;
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none; /* IE y Edge */
+}
+
+.mostrar-equipos::-webkit-scrollbar {
+  display: none;           /* Chrome, Safari y Opera */
+}
+
+.flecha{
+  width: 25px;
+} 
+
+.rotar-flecha{
+  transform: rotate(180deg);
+}
+
+.rotar-flecha270deg{
+  transform: rotate(270deg);
+}
+
+.flecha-derecha{
+  width: 15px;
+}
+
+.icono-login{
+  width: 22px;
+  height: 22px;
+}
+
+.acceder{
+  display: flex;
+  align-items: center;   
+  justify-content: center; 
+  gap: 8px; 
+  padding: 8px 14px;
+  cursor: pointer;
+  background-color: rgb(30, 38, 49);
+  color: whitesmoke;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: none;
+}
+
+
+
+/************************** CARRITO *********************/
+.vista-carrito{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  justify-content: center;
+  text-align: center;
+  gap: 100px;
+  margin-left: 10px;
+  margin-top: 10px;
+  border-radius: 15px;
+  height: auto;
+  border: 2px solid grey;
+  top: 0;
+}
+
+.carrito-vacio{
+  display: flex;
+  justify-content: center;
+  width: 100px;
+  margin: 0 auto;
+  align-content: center;
+}
+
+.carrito-x{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-bottom: 2px solid grey;
+  padding: 10px;
+}
+
+.carrito-x img{
+  width: 20px;
+  height: 20px;
+}
+
+.carrito-x img:hover{
+  cursor: pointer;
+}
+
+.carr-tex-bot{
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  gap: 20px;
+}
+
+.boton-comprar{
+  border-radius: 25px;
+  padding: 15px;
+  border: none;
+  background-color: rgb(129, 186, 61);
+  color: white;
+}
+
+
+/************************** BUSCADOR *********************/
+.buscador{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+  width: 100%;
+}
+
+.buscar{
+  border: none;
+  border-bottom: 2px solid grey;
+  background: none;
+  width: 70%;
+  padding: 20px;
+  margin-left: 20px;
+}
+
+.x-negra{
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+.x-negra:hover{
+  cursor: pointer;
+}
+
+
+/* ----------- TABLET ----------- */
+@media screen and (min-width: 650px) {
+    .navbar {
+        padding: 20px;
+    }
+
+    .logo {
+        width: 9rem;
+    }
+
+    .hamburguesa {
+        width: 35px;
+        height: 35px;
+    }
+
+    .lupa-carrito-login img {
+        width: 35px;
+    }
+
+    .lupa-carrito-login {
+        gap: 2px;
+    }
+
+    #login {
+        display: flex;
+    }
+
+    #login:hover {
+        cursor: pointer;
+    }
+
+    .buscador{
+      justify-content: center;
+      gap:10px;
+    }
+
+    .acceder{
+      display: none;
+    }
+}
+
+/* ----------- ESCRITORIO ----------- */
+@media screen and (min-width: 1000px) {
+  .hamburguesa {
+    display: none;
+  }
+
+  .navbar {
+    position: relative;
+    display: flex;         
+    align-items: center;
+    justify-content: space-between; 
+    padding: 20px;
+  }
+
+  .lupa-carrito-login .lupa {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  
+  .logo {
+    margin: 0 auto;
+    width: 9rem;
+  }
+
+ 
+  .lupa-carrito-login {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .secciones{
+    position: relative;
+    display: flex;             
+    justify-content: center;   
+    padding: 10px 20px;        
+    margin: 0;                 
+    list-style: none;           
+    color: whitesmoke;
+    gap: 30px;
+    border: none;
+  }
+
+  .seccion{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+  }
+
+  .flecha{
+    width: 15px;
+  }
+
+  .flecha-derecha{
+    width: 10px;
+  }
+
+  .rotar-flecha270deg{
+    transform: rotate(180deg);
+  }
+
+  .subsecciones{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%; 
+    left: -20px;
+    background-color: rgb(129, 186, 61);
+    color: rgb(30, 38, 49);
+    list-style: none;
+    padding: 20px;
+    width: 150px;
+    border-radius: 15px;
+    gap: 15px;
+  }
+
+  .equipos{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    position: absolute;
+    left: 100%;
+    width: 160px;
+    background-color:rgb(129, 186, 61) ;
+    color: rgb(30, 38, 49);
+    border-radius: 15px;
+    gap: 5px;
+    padding: 20px;
+    top: 0%;
+    
+  }
+
+  .vista-carrito{
+    z-index: 800;
+  }
+
+  .buscador{
+    z-index: 800;
+  }
+
+  .acceder{
+      display: none;
+    }
+
+}
+
+
