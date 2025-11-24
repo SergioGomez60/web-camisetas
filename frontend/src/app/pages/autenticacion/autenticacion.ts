@@ -4,16 +4,7 @@ import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-autenticacion',
-  imports: [AsyncPipe],
-  providers: [
-    provideAuth0({
-      domain: 'dev-32mzzfaff4uprtnv.us.auth0.com',
-      clientId: 'T7ZO8gLy6JiD0DMT0zOGMkeIxLf5nGtf',
-      authorizationParams: {
-        redirect_uri: window.location.origin
-      }
-    })
-  ],
+  imports: [],
   templateUrl: './autenticacion.html',
   styleUrl: './autenticacion.css',
 })
@@ -37,7 +28,8 @@ export class Autenticacion {
   register() {
     this.auth.loginWithRedirect({
       authorizationParams: {
-        screen_hint: 'signup'
+        screen_hint: 'signup',
+        audience: "http://camisworld"
       }
     });
 }
