@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
+import { AsyncPipe } from '@angular/common';
 
 interface Equipo { nombre: string }
 interface Liga { nombre: string; equipos: Equipo[]; abierta?: boolean; }
@@ -9,15 +11,15 @@ interface Seccion { nombre: string; ligas?: Liga[]; abierta?: boolean; }
   selector: 'app-header',
   templateUrl: './header.html',
   styleUrl: './header.css',
-  imports: []
+  imports: [AsyncPipe]
 })
-export class Header {
+export class Header implements OnInit{
   mostrarMenu = false;
   secciones: Seccion[] = [];
   mostrarBuscador = false;
   mostrarCarrito = false;
 
-  constructor(private router:Router) {
+  constructor(private router:Router, public authService:AuthService) {
     this.secciones = [
       {
         nombre: "Clubes 25/26",
@@ -151,6 +153,16 @@ export class Header {
     ];
   }
 
+  ngOnInit(): void {
+    this.authService.user$.subscribe(user => {
+      console.log(user) // Todos los datos del usuario usando user.loquesea
+  })
+
+    this.authService.idTokenClaims$.subscribe(claims => {
+      console.log("Token claims:",claims)
+  })
+  }
+
   toggleMenu() {
     this.mostrarMenu = !this.mostrarMenu;
     this.mostrarBuscador = false 
@@ -183,10 +195,12 @@ export class Header {
   }
 
   paginaLogin(){
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/auth"]);
   }
 
- 
+  logout(){
+    this.authService.logout()
+  }
 }
 
 
