@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,DestroyRef} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { AsyncPipe } from '@angular/common';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 
 interface Equipo { nombre: string }
 interface Liga { nombre: string; equipos: Equipo[]; abierta?: boolean; }
@@ -19,7 +21,7 @@ export class Header implements OnInit{
   mostrarBuscador = false;
   mostrarCarrito = false;
 
-  constructor(private router:Router, public authService:AuthService) {
+  constructor(private router:Router, public authService:AuthService,private destroyRef: DestroyRef) {
     this.secciones = [
       {
         nombre: "Clubes 25/26",
@@ -154,13 +156,21 @@ export class Header implements OnInit{
   }
 
   ngOnInit(): void {
-    this.authService.user$.subscribe(user => {
-      console.log(user) // Todos los datos del usuario usando user.loquesea
-  })
+    this.authService.user$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(user => console.log(user));
 
     this.authService.idTokenClaims$.subscribe(claims => {
       console.log("Token claims:",claims)
-  })
+    })
+
+    this.authService.isAuthenticated$.subscribe((isAuthenticated) => {
+        if(isAuthenticated){
+          this.router.navigate(["/inicio"])
+        }
+    })
+  }
+
+  login(){
+    this.authService.loginWithRedirect()
   }
 
   toggleMenu() {
@@ -199,7 +209,7 @@ export class Header implements OnInit{
   }
 
   logout(){
-    this.authService.logout()
+    this.authService.logout({logoutParams: { returnTo: window.location.origin }});
   }
 }
 

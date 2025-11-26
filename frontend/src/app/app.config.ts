@@ -12,7 +12,9 @@ export const appConfig: ApplicationConfig = {
       domain: 'dev-32mzzfaff4uprtnv.us.auth0.com',
       clientId: 'T7ZO8gLy6JiD0DMT0zOGMkeIxLf5nGtf',
       authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: window.location.origin,
+        useRefreshTokens: true,
+        cacheLocation: 'localstorage'
       }
     })
   ]
