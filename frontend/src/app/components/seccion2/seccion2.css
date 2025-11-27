@@ -1,6 +1,7 @@
 .seccion2{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-top: 40px;
+    
 }
 
 .titulo-cajas{
@@ -24,6 +25,7 @@
     width: 160px;
     height: 160px;
     border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,1.5);
 }
 
 .caja h3{
@@ -34,6 +36,27 @@
 .caja p{
     font-size: 15px;
     text-align: center;
+}
+
+.boton-cajas{
+    display: block;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #0E131F 0%, #1A2333 100%);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 50px;
+    font-weight: 600;
+    border: none;
+    scale: 1;
+    transition: 0.5s;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.boton-cajas:hover{
+    cursor: pointer;
+    transition: 0.5s;
+    scale: 1.1;
 }
 
 
@@ -60,6 +83,12 @@
     .caja p{
         font-size: 16px;
     }
+
+    .boton-cajas{
+        font-size: 20px;
+        padding: 20px;
+        border-radius: 30px;
+    }
 }
 
 
@@ -73,6 +102,12 @@
     .cajas{
         grid-template-columns: 200px 200px 200px 200px;
         gap: 40px;
+    }
+
+    .caja{
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
     }
 
     .caja img{
@@ -104,6 +139,11 @@
     .cajas{
         grid-template-columns: 320px 320px 320px 320px;
         gap: 60px;
+        margin-top: 50px;
+    }
+
+    .caja{
+        gap: 8px;
     }
 
     .caja img{
@@ -117,5 +157,10 @@
 
     .caja p{
         font-size: 25px;
+    }
+
+    .boton-cajas{
+        font-size: 24px;
+        border-radius: 35px;
     }
 }

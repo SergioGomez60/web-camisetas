@@ -34,12 +34,16 @@
     justify-content: center;
     gap: 30px;
     margin-top: 20px;
+    
 }
+
+
 
 .camiseta img{
     width: 160px;
     height: 160px;
     border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,1.5);
 }
 
 .camiseta h3{
@@ -98,10 +102,18 @@
 
     .texto2{
         font-size: 40px;
+        margin-top: 40px;
     }
 
     .camisetas{
         grid-template-columns: 300px 300px;
+        margin-top: 30px;
+    }
+
+    .camiseta{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
     }
 
     .camiseta img{
@@ -131,10 +143,12 @@
 
     .texto2{
         font-size: 60px;
+        margin-top: 70px;
     }
 
     .camisetas{
         grid-template-columns: 500px 500px;
+        margin-top: 50px;
     }
 
     .camiseta img{
@@ -144,6 +158,7 @@
 
     .camiseta h3{
         font-size: 35px;
+        line-height: 1.1;
     }
 
     .camiseta p{

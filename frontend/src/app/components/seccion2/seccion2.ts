@@ -13,4 +13,6 @@ export class Seccion2 {
     {nombre: "Caja Premium", precio: 69.99, imagen:"assets/caja-premium.png"},
     {nombre: "Caja Retro", precio: 79.99, imagen:"assets/caja-retro.png"}
   ]
+
+  
 }
