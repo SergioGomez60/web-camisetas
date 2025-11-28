@@ -4,12 +4,13 @@ import { Seccion1 } from '../../components/seccion1/seccion1';
 import { Seccion2 } from '../../components/seccion2/seccion2';
 import { AuthService } from '@auth0/auth0-angular';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Seccion3 } from '../../components/seccion3/seccion3';
 
 
 
 @Component({
   selector: 'app-inicio',
-  imports: [Header,Seccion1,Seccion2],
+  imports: [Header,Seccion1,Seccion2,Seccion3],
   templateUrl: './inicio.html',
   styleUrl: './inicio.css',
 })

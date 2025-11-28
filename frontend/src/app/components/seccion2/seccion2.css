@@ -1,12 +1,15 @@
 .seccion2{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-top: 40px;
-    
+    padding: 20px;
+    background: #0b1a2b;
+    display: flex;
+    flex-direction: column;
 }
 
 .titulo-cajas{
     text-align: center;
-    color: rgb(34, 47, 65);
+    color: #f2f2f2;
 }
 
 .cajas{
@@ -14,7 +17,7 @@
     grid-template-columns: 160px 160px;
     justify-content: center;
     gap: 30px;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 .caja:hover{
@@ -25,24 +28,27 @@
     width: 160px;
     height: 160px;
     border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,1.5);
+    /* box-shadow: 0 2px 8px rgba(0,0,0,1.5); */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .caja h3{
     font-size: 16px;
     text-align: center;
+    color: #f2f2f2;
 }
 
 .caja p{
     font-size: 15px;
     text-align: center;
+    color: #f2f2f2;
 }
 
 .boton-cajas{
     display: block;
     margin: 0 auto;
-    background: linear-gradient(180deg, #0E131F 0%, #1A2333 100%);
-    color: white;
+    background: #f2f2f2;
+    color: #0b1a2b;
     padding: 12px 22px;
     border-radius: 50px;
     font-weight: 600;
@@ -63,8 +69,13 @@
 /* ----------- TABLET ----------- */
 @media screen and (min-width: 650px) {
 
+    .seccion2{
+        gap: 10px;
+    }
+
     .titulo-cajas{
         font-size: 30px;
+        margin-top: 10px;
     }
 
     .cajas{
@@ -95,8 +106,13 @@
 /* ----------- PORTATIL ----------- */
 @media screen and (min-width: 1000px) {
 
+    .seccion2{
+        gap: 20px;
+    }
+
     .titulo-cajas{
         font-size: 40px;
+        margin-top: 20px;
     }
 
     .cajas{
@@ -107,7 +123,7 @@
     .caja{
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 4px;
     }
 
     .caja img{
@@ -143,7 +159,7 @@
     }
 
     .caja{
-        gap: 8px;
+        gap: 10px;
     }
 
     .caja img{

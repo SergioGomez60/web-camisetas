@@ -5,11 +5,10 @@ nav {
     width: 100%;
     position: sticky;
     z-index: 1000;
-    /* background-image: url("/assets/fondo-navbar2.png");
-    background-repeat: no-repeat; */
     background: linear-gradient(180deg, #0E131F 0%, #1A2333 100%);
     border-bottom: 3px solid #7ED957;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #1a1a1a;
 }
 
 .navbar {
@@ -62,15 +61,16 @@ nav {
   gap: 20px;
   padding: 20px 0;
   font-size: 20px;
-  border-bottom: 5px solid grey;
+  border-bottom: 3px solid grey;
 }
 
 .seccion{
   align-items: center;
-  border-bottom: 2px solid grey;
-  font-size: 30px;
+  border-bottom: 1px solid grey;
+  font-size: 25px;
   margin-left: 10px;
   margin-right: 10px;
+  padding: 5px;
 } 
 
 .seccion,.ligas,.equipos:hover{
@@ -91,6 +91,11 @@ nav {
 .mostrar-subsecciones{
   display: flex;
   flex-direction: column;
+  padding: 5px;
+}
+
+.liga{
+  padding: 5px;
 }
 
 .equipos{
@@ -110,6 +115,8 @@ nav {
   max-height: 300px;
   scrollbar-width: none;   /* Firefox */
   -ms-overflow-style: none; /* IE y Edge */
+  padding: 5px;
+  gap: 10px;
 }
 
 .mostrar-equipos::-webkit-scrollbar {
