@@ -21,9 +21,6 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.columna1{
-}
-
 .columna1 ul{
     display: flex;
     flex-direction: column;
@@ -68,4 +65,133 @@
 
 .columna2 p,.columna3 p{
     font-size: 12px;
+}
+
+
+/* ----------- TABLET ----------- */
+@media screen and (min-width: 650px) {
+    .seccion3{
+        width: 70%;
+        padding: 30px;
+    }
+
+    .titulo-seccion3{
+        font-size: 30px;
+    }
+
+    .columna1 ul{
+        font-size: 16px;
+        gap: 15px;
+        margin-top: 40px;
+    }
+
+    .columna2 ul{
+        gap: 26px;
+        font-size: 11px;
+    }
+
+    .columna3 ul{
+        gap: 26px;
+        font-size: 11px;
+    }
+
+    .columna2{
+        padding: 25px 10px;
+    }
+
+    .columna3{
+        padding: 25px 10px;
+    }
+
+    .columna2 p,.columna3 p{
+        font-size: 15px;
+    }
+}
+
+
+/* ----------- PORTATIL ----------- */
+@media screen and (min-width: 1000px) {
+    .seccion3{
+        width: 50%;
+        padding: 50px;
+        border-radius: 25px;
+    }
+
+    .titulo-seccion3{
+        font-size: 40px;
+        margin-top: 40px;
+    }
+
+    .columna1 ul{
+        font-size: 16px;
+        gap: 15px;
+        margin-top: 50px;
+    }
+
+    .columna2 ul{
+        gap: 26px;
+        font-size: 12px;
+    }
+
+    .columna3 ul{
+        gap: 26px;
+        font-size: 12px;
+    }
+
+    .columna2{
+        padding: 35px 10px;
+    }
+
+    .columna3{
+        padding: 35px 10px;
+    }
+
+    .columna2 p,.columna3 p{
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+}
+
+
+/* ----------- MONITOR ----------- */
+@media screen and (min-width: 1400px) {
+    .seccion3{
+        width: 40%;
+        padding: 50px;
+        border-radius: 20px;
+    }
+
+    .titulo-seccion3{
+        font-size: 40px;
+        margin-top: 40px;
+    }
+
+    .columna1 ul{
+        font-size: 20px;
+        gap: 32px;
+        margin-top: 46px;
+    }
+
+    .columna2 ul{
+        gap: 30px;
+        font-size: 15px;
+    }
+
+    .columna3 ul{
+        gap: 30px;
+        font-size: 15px;
+    }
+
+    .columna2{
+        padding: 35px 10px;
+    }
+
+    .columna3{
+        padding: 35px 10px;
+    }
+
+    .columna2 p,.columna3 p{
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
 }
