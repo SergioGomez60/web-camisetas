@@ -57,7 +57,8 @@
 
 .swiper-pagination-bullet-active {
   background: #333;
-}
+} 
+
 
 .titulo-seccion4 {
   color: #fff;
@@ -78,6 +79,8 @@
   transform: translateX(-50%);
   border-radius: 3px;
 }
+
+
 
 
 

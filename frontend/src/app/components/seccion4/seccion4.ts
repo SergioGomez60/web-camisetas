@@ -21,27 +21,38 @@ export class Seccion4 implements AfterViewInit {
     { img: '/assets/logo-camis.png', opinion: '“Compra fácil y envío rápido. La camiseta se ve igual que en la foto.”', estrellas: '⭐⭐⭐⭐⭐',nombre:"Jesus.H" },
   ];
 
-    ngAfterViewInit(): void {
-      new Swiper('.mySwiper', {
-        modules: [Navigation, Pagination, EffectCoverflow],
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        loop: true,
-        spaceBetween: 30,
-        coverflowEffect: {
-          rotate: 20,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        pagination: { clickable: true },
-      });
-  }
+     ngAfterViewInit(): void {
+       new Swiper('.mySwiper', {
+         modules: [Navigation, Pagination, EffectCoverflow],
+         effect: 'coverflow',
+         grabCursor: true,
+         centeredSlides: true,
+         slidesPerView: 'auto',
+         loop: true,
+         spaceBetween: 30,
+         coverflowEffect: {
+           rotate: 20,
+           stretch: 0,
+           depth: 100,
+           modifier: 1,
+           slideShadows: true,
+         },
+
+         watchSlidesProgress: true,
+
+         navigation: {
+           nextEl: '.swiper-button-next',
+           prevEl: '.swiper-button-prev',
+         },
+         pagination: {
+         el: '.swiper-pagination',
+         clickable: true,
+         },
+       });
+   }
+
+
 }
+
+
+
