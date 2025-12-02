@@ -65,6 +65,7 @@
 
 .columna2 p,.columna3 p{
     font-size: 12px;
+    margin-bottom: 12px;
 }
 
 
@@ -118,7 +119,7 @@
     }
 
     .titulo-seccion3{
-        font-size: 40px;
+        font-size: 35px;
         margin-top: 40px;
     }
 
@@ -159,11 +160,12 @@
         width: 40%;
         padding: 50px;
         border-radius: 20px;
+        margin-top: 60px;
     }
 
     .titulo-seccion3{
-        font-size: 40px;
-        margin-top: 40px;
+        font-size: 45px;
+        margin-top: 50px;
     }
 
     .columna1 ul{

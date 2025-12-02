@@ -6,14 +6,13 @@
 .mySwiper {
   width: 100%;
   padding: 40px 0;
-  background-color: grey;
+  background-color: #1A1A1A;
   margin-top: 50px;
 }
 
 .reseña {
   background-color: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -51,11 +50,6 @@
   font-size: 0.9rem;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  color: #333;
-}
-
 .swiper-pagination-bullet {
   background: #ccc;
   opacity: 1;
@@ -65,32 +59,100 @@
   background: #333;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgba(0,0,0,0.5);
+.titulo-seccion4 {
   color: #fff;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-/* No tocar ::after para la dirección */
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 20px;
-  color: #fff;
+.titulo-seccion4::after {
+  content: "";
+  width: 80%;
+  height: 3px;
+  background: #9EFF00; 
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 3px;
 }
 
 
 
 /* ----------- TABLET ----------- */
 @media screen and (min-width: 650px) {
-    .reseña{
-        max-width: 500px;
-    }
+  .reseña {
+    max-width: 550px;
+  }
+
+  .titulo-seccion4{
+    font-size: 27px;
+  }
+
+  .titulo-seccion4::after{
+    width: 55%;
+  }
+}
+
+
+/* ----------- PORTATIL ----------- */
+@media screen and (min-width: 1000px) {
+  .reseña {
+    max-width: 600px;
+  }
+
+  .titulo-seccion4{
+    font-size: 35px;
+    padding: 7px;
+  }
+
+  .titulo-seccion4::after{
+    width: 45%;
+  }
+
+  .reseña img{
+    width: 100px;
+    height: 100px;
+  }
+
+  .opinion{
+    font-size: 1.2rem;
+  }
+}
+
+
+/* ----------- MONITOR ----------- */
+@media screen and (min-width: 1400px) {
+  .reseña {
+    max-width: 900px;
+    height: 300px;
+  }
+
+  .titulo-seccion4{
+    font-size: 45px;
+    padding: 12px;
+  }
+
+  .titulo-seccion4::after{
+    width: 30%;
+  }
+
+  .reseña img{
+    width: 150px;
+    height: 150px;
+  }
+
+  .opinion{
+    font-size: 1.4rem;
+  }
+
+  .estrellas{
+    font-size: 1.2rem;
+  }
+
+  .nombre{
+    font-size: 1.1rem;
+  }
 }

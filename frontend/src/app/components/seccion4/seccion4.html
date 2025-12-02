@@ -1,22 +1,22 @@
 <div class="swiper mySwiper">
+  <h2 class="titulo-seccion4">¿QUÉ OPINAN NUESTROS CLIENTES?</h2>
   <div class="swiper-wrapper">
-    <!-- Loop con *ngFor -->
-    <div class="swiper-slide" *ngFor="let slide of slides">
-      <div class="reseña">
-        <img [src]="slide.img" alt="logo">
-        <p class="opinion">{{ slide.opinion }}</p>
-        <p class="estrellas">{{ slide.estrellas }}</p>
-        <p class="nombre">{{ slide.nombre }}</p>
+    @for (slide of slides; track slide) {
+      <div class="swiper-slide">
+        <div class="reseña">
+          <img [src]="slide.img" alt="logo">
+          <p class="opinion">{{ slide.opinion }}</p>
+          <p class="estrellas">{{ slide.estrellas }}</p>
+          <p class="nombre">{{ slide.nombre }}</p>
+        </div>
       </div>
-    </div>
+    }
+
   </div>
 
-  <!-- Condicional con *ngIf -->
-  <ng-container *ngIf="slides.length > 1">
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+  @if (slides.length > 1) {
     <div class="swiper-pagination"></div>
-  </ng-container>
+  }
 </div>
 
 
