@@ -71,6 +71,7 @@ nav {
   margin-left: 10px;
   margin-right: 10px;
   padding: 5px;
+  transition: 0.5s;
 } 
 
 .seccion,.ligas,.equipos:hover{
@@ -98,6 +99,9 @@ nav {
   padding: 5px;
 }
 
+.liga:hover{
+}
+
 .equipos{
   display: none;
   list-style: none;
@@ -105,7 +109,8 @@ nav {
 
 .equipo{
   text-decoration: none;
-  color: black;
+  transition: 0.1s;
+  color: #1a1a1a;
 }
 
 .mostrar-equipos{
@@ -361,6 +366,11 @@ nav {
     transform: rotate(180deg);
   }
 
+  .seccion:hover{
+    transition: 0.5s;
+    color: #7ED957;
+  }
+
   .subsecciones{
     display: flex;
     flex-direction: column;
@@ -389,6 +399,11 @@ nav {
     padding: 20px;
     top: 0;
     
+  }
+
+  .equipo:hover{
+    color: #7ED957;
+    transition: 0.1s;
   }
 
   .equipo{

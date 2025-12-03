@@ -28,15 +28,15 @@
     gap: 10px;
     list-style: none;
     color: #FFFFFF;
-    font-size: 11px;
+    font-size: 12px;
 }
 
 .columna2{
     text-align: center;
-    background-color:#7ED957;
     padding: 20px 10px;
     border-radius: 25px;
     color: #FFFFFF;
+    background-color: #1C1F26;
 }
 
 .columna2 ul{
@@ -45,12 +45,12 @@
     list-style: none;
     text-align: center;
     gap: 30px;
+    font-size: 13px;
 }
 
 .columna3{
     text-align: center;
     color: #FFFFFF;
-    background-color: #1C1F26;
     padding: 20px 10px;
     border-radius: 25px;
 }
@@ -61,6 +61,7 @@
     list-style: none;
     text-align: center;
     gap: 30px;
+    font-size: 13px;
 }
 
 .columna2 p,.columna3 p{
@@ -88,12 +89,12 @@
 
     .columna2 ul{
         gap: 26px;
-        font-size: 11px;
+        font-size: 14px;
     }
 
     .columna3 ul{
         gap: 26px;
-        font-size: 11px;
+        font-size: 14px;
     }
 
     .columna2{
@@ -196,4 +197,37 @@
         font-size: 20px;
         margin-bottom: 12px;
     }
+} 
+
+
+
+/* .tabla-container{
+    padding: 30px;
+    background-color: white;
 }
+
+.tabla{
+    background-color:#e0e0e0;
+    color: black;
+    padding: 30px;
+    border-radius: 25px;
+}
+
+.check{
+    text-align: center;
+}
+
+.cross{
+    text-align: center;
+} */
+
+
+
+
+
+
+
+
+
+
+
