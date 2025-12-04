@@ -81,6 +81,10 @@
         }
       </li>
     }
-    <button class="acceder" (click)="login()"><img class="icono-login" src="assets/login.png" alt="login">Acceder</button>
+    @if(isAuthenticated()){
+      <button class="acceder"><img class="icono-login" src="assets/login.png" alt="login">Perfil</button>
+    }@else {
+      <button class="acceder" (click)="login()"><img class="icono-login" src="assets/login.png" alt="login">Acceder</button>
+    }
   </ul>
 </nav>

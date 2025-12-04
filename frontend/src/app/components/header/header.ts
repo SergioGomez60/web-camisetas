@@ -1,4 +1,4 @@
-import { Component, OnInit,DestroyRef} from '@angular/core';
+import { Component, OnInit,DestroyRef, signal} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { AsyncPipe } from '@angular/common';
@@ -11,17 +11,19 @@ interface Seccion { nombre: string; ligas?: Liga[]; abierta?: boolean; }
 
 @Component({
   selector: 'app-header',
+  standalone: true,
   templateUrl: './header.html',
   styleUrl: './header.css',
   imports: [AsyncPipe]
 })
-export class Header implements OnInit{
+export class Header{
   mostrarMenu = false;
   secciones: Seccion[] = [];
   mostrarBuscador = false;
   mostrarCarrito = false;
+  isAuthenticated = signal(false);
 
-  constructor(private router:Router, public authService:AuthService,private destroyRef: DestroyRef) {
+  constructor(private router:Router, public authService:AuthService) {
     this.secciones = [
       {
         nombre: "Clubes 25/26",
@@ -153,21 +155,16 @@ export class Header implements OnInit{
       { nombre: 'Camisetas Retro' },
       { nombre: 'Cajas Sorpresa' }
     ];
-  }
 
-  ngOnInit(): void {
-    this.authService.user$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(user => console.log(user));
+    // 🔹 Suscripción a Auth0 para persistencia y actualización reactiva
+    this.authService.isAuthenticated$.subscribe(value => {
+      this.isAuthenticated.set(value);
+    });
 
-    this.authService.idTokenClaims$.subscribe(claims => {
-      console.log("Token claims:",claims)
-    })
+  }  
 
-    this.authService.isAuthenticated$.subscribe((isAuthenticated) => {
-        if(isAuthenticated){
-          this.router.navigate(["/inicio"])
-        }
-    })
-  }
+
+  
 
   login(){
     this.authService.loginWithRedirect()
