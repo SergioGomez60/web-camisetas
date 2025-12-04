@@ -21,6 +21,7 @@
       </div>
    }
 
+
    <!-- Carrito -->
     @if(mostrarCarrito){
       <div class="vista-carrito">
@@ -83,6 +84,7 @@
     }
     @if(isAuthenticated()){
       <button class="acceder"><img class="icono-login" src="assets/login.png" alt="login">Perfil</button>
+      <button class="logout" (click)="logout()">Cerrar Sesión</button>
     }@else {
       <button class="acceder" (click)="login()"><img class="icono-login" src="assets/login.png" alt="login">Acceder</button>
     }

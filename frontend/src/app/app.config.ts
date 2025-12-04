@@ -11,10 +11,10 @@ export const appConfig: ApplicationConfig = {
     provideAuth0({
       domain: 'dev-32mzzfaff4uprtnv.us.auth0.com',
       clientId: 'T7ZO8gLy6JiD0DMT0zOGMkeIxLf5nGtf',
+      useRefreshTokens: true,
+      cacheLocation: 'localstorage',
       authorizationParams: {
-        redirect_uri: window.location.origin,
-        useRefreshTokens: true,
-        cacheLocation: 'localstorage'
+        redirect_uri: window.location.origin
       }
     })
   ]
