@@ -1,0 +1,37 @@
+<h2>Buscar camisetas por equipo</h2>
+
+<!-- Campo de búsqueda usando Reactive Forms -->
+<input 
+  type="text"
+  [formControl]="equipoControl"
+  placeholder="Ej: Barcelona"
+  class="form-control"
+/>
+
+<button (click)="buscar()" class="btn btn-primary mt-2">
+  Buscar
+</button>
+
+@if (error) {
+  <div class="alert alert-danger mt-3">
+    {{ error }}
+  </div>
+}
+
+@if (camisetas.length > 0) {
+  <div class="mt-3">
+    <h3>Camisetas encontradas:</h3>
+
+    @for (c of camisetas; track c.id) {
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5>{{ c.nombre }}</h5>
+          <p>Precio: {{ c.precio }} €</p>
+          <img [src]="c.imagen_url" width="150" />
+        </div>
+      </div>
+    }
+  </div>
+}
+
+

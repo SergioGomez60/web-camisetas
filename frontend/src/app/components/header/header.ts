@@ -1,5 +1,5 @@
 import { Component, OnInit,DestroyRef, signal} from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { AsyncPipe } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -14,7 +14,7 @@ interface Seccion { nombre: string; ligas?: Liga[]; abierta?: boolean; }
   standalone: true,
   templateUrl: './header.html',
   styleUrl: './header.css',
-  imports: [AsyncPipe]
+  imports: []
 })
 export class Header{
   mostrarMenu = false;
