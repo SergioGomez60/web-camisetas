@@ -1,8 +1,7 @@
-import { Component, OnInit,DestroyRef, signal} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { AsyncPipe } from '@angular/common';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 
 interface Equipo { nombre: string }
@@ -14,7 +13,7 @@ interface Seccion { nombre: string; ligas?: Liga[]; abierta?: boolean; }
   standalone: true,
   templateUrl: './header.html',
   styleUrl: './header.css',
-  imports: []
+  imports: [RouterLink,CommonModule]
 })
 export class Header{
   mostrarMenu = false;
@@ -161,10 +160,32 @@ export class Header{
       this.isAuthenticated.set(value);
     });
 
+
   }  
 
+  // header.ts (Dentro de la clase Header)
 
-  
+// ...
+
+// Nueva función para navegar y cerrar menús después de hacer clic en un equipo
+navegarYcerrarMenu() {
+  // 1. Cierra todos los menús desplegables
+  this.mostrarMenu = false;
+  this.mostrarBuscador = false;
+  this.mostrarCarrito = false;
+
+  // 2. Cierra las secciones y ligas abiertas (para resetear el estado del acordeón)
+  this.secciones.forEach(seccion => {
+    seccion.abierta = false;
+    if (seccion.ligas) {
+      seccion.ligas.forEach(liga => {
+        liga.abierta = false;
+      });
+    }
+  });
+
+}
+
 
   login(){
     this.authService.loginWithRedirect()
@@ -208,6 +229,8 @@ export class Header{
   logout(){
     this.authService.logout({logoutParams: { returnTo: window.location.origin }});
   }
+
+
 }
 
 

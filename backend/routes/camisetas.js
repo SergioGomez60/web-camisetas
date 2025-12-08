@@ -8,14 +8,15 @@ const router = express.Router();
  * Ejemplo: /camisetas/equipo/Barcelona
  */
 
-router.get("/equipo/:nombreEquipo", async (req,res) => {
+router.get("/:nombreEquipo", async (req,res) => {
     try{
         const nombre = req.params.nombreEquipo;
 
         const [camisetas] = await db.query(
-            `SELECT c.* FROM camisetas c
-            JOIN equipos e ON c.id_equipo = e.id
-            WHERE e.nombre = ?`,
+            `SELECT c.*, e.nombre as nombre_equipo 
+             FROM camisetas c
+             JOIN equipos e ON c.id_equipo = e.id
+             WHERE e.nombre = ?`,
             [nombre]
         );
         res.json(camisetas)
@@ -24,3 +25,5 @@ router.get("/equipo/:nombreEquipo", async (req,res) => {
     res.status(500).json({ error: 'Error obteniendo camisetas' });
     }
 })
+
+export default router;

@@ -5,9 +5,8 @@ import { Camisetas } from './pages/camisetas/camisetas';
 
 export const routes: Routes = [
     {path: "", component:Inicio },
+    {path:"equipo/:id", component:Camisetas},
     {path:"**", redirectTo: "inicio", pathMatch:"full"}, // Cuando el usuario entre a una ruta inexistente, Angular lo redirige automáticamente a auth.
                                                       // Indica que la coincidencia debe ser del path completo, no solo un prefijo.
-    {path:"camisetas", component:Camisetas}
 ];
 
-// canActivate:[authGuard]

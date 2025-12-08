@@ -72,7 +72,7 @@
                 @if (liga.equipos.length && liga.abierta) {
                   <ul class="equipos mostrar-equipos">
                     @for (equipo of liga.equipos; track equipo) {
-                      <li><a class="equipo" href="#">{{ equipo.nombre }}</a></li>
+                      <li><a class="equipo" [routerLink]="['/equipo',equipo.nombre]" (click)="navegarYcerrarMenu()">{{ equipo.nombre }}</a></li>
                     }
                   </ul>
                 }
