@@ -11,7 +11,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop'; // ⬅️ Nuevo
   imports: [CommonModule], 
   templateUrl: './camisetas.html'
 })
-export class Camisetas implements OnInit{
+export class Camisetas{
   // Usamos 'inject' para obtener dependencias de forma moderna
   private route = inject(ActivatedRoute); 
   private camisetasService = inject(CamisetasService);
@@ -21,10 +21,8 @@ export class Camisetas implements OnInit{
   nombreEquipoActual: string = '';
 
   // El constructor ya no necesita recibir inyecciones, podemos usar `inject()` arriba.
-  constructor(private injector:Injector) {} 
-
-  ngOnInit(): void {
-    // 🔑 Lógica CORREGIDA: Esto es lo que debe ir dentro de la suscripción
+  constructor(private injector:Injector) {
+   // 🔑 Lógica CORREGIDA: Esto es lo que debe ir dentro de la suscripción
     this.route.paramMap.pipe(
       takeUntilDestroyed() 
     ).subscribe(params => {
@@ -35,7 +33,7 @@ export class Camisetas implements OnInit{
           this.cargarCamisetas(nombreEquipo); // ⬅️ ¡ESTO FALTABA!
         }
     });
-  }
+} 
 
 
   cargarCamisetas(nombre: string) {

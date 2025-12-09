@@ -29,6 +29,6 @@ export class CamisetasService {
     const nombreCodificado = encodeURIComponent(nombreEquipo);
     
     // Llama a tu endpoint de Node.js: http://localhost:3000/camisetas/equipo/Real%20Madrid
-    return this.http.get<Camiseta[]>(`${this.apiUrl}/equipo/${nombreCodificado}`);
+    return this.http.get<Camiseta[]>(`${this.apiUrl}/${nombreCodificado}`);
   }
 }
