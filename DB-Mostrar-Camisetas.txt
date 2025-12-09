@@ -1,0 +1,138 @@
+// PASO A PASO COMO CONECTAR A BASE DE DATOS Y MOSTRAR CAMISETAS
+
+1. CONECTAR A BASE DE DATOS (backend/db.js)
+
+    import mysql from 'mysql2/promise';
+
+    export const db = mysql.createPool({
+    host: 'localhost',      // ¿Dónde está la base de datos? (En tu PC)
+    user: 'root',           // Usuario
+    password: 'Chiquito60', // Contraseña 
+    database: 'tienda_camisetas', // Nombre de la base de datos a usar
+    waitForConnections: true,
+    connectionLimit: 10,    // Máximo 10 conexiones simultáneas
+    queueLimit: 0
+    });
+
+
+2. CONFIGURAR EL SERVIDOR (backend/server.js)
+
+    import express from 'express';
+    import cors from 'cors';
+    import camisetasRoutes from './routes/camisetas.js'; // Importamos las rutas
+
+    const app = express();
+
+    app.use(cors()); // Permite que Angular (puerto 4200) hable con Node (puerto 3000)
+    app.use(express.json());
+
+    // Rutas
+    app.use('/camisetas', camisetasRoutes); // <--- LÍNEA CLAVE
+
+    // Puerto
+    const PORT = 3000;
+    app.listen(PORT, () => {
+    console.log(`Servidor Node.js en http://localhost:${PORT}`);
+    });
+
+
+3. LA CONSULTA: BUSCANDO LOS DATOS (SQL) (backend/routes/camisetas.js)
+
+    import express from 'express';
+    import { db } from '../db.js'; // Importamos la conexión del paso 1
+
+    const router = express.Router();
+
+    // Ruta: /camisetas/:nombreEquipo
+    router.get("/:nombreEquipo", async (req,res) => {
+        try{
+            const nombre = req.params.nombreEquipo; // Captura "Barcelona" de la URL
+
+            // Ejecuta la consulta SQL
+            const [camisetas] = await db.query(
+                `SELECT c.*, e.nombre as nombre_equipo 
+                FROM camisetas c
+                JOIN equipos e ON c.id_equipo = e.id
+                WHERE e.nombre = ?`,
+                [nombre] // El '?' se sustituye por 'Barcelona' de forma segura
+            );
+            res.json(camisetas); // Envía los resultados como JSON al frontend
+        }catch (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Error obteniendo camisetas' });
+        }
+    })
+
+    export default router;
+
+
+4. LLAMAMOS AL SERVIDOR QUE ACABAMOS DE VER (frontend/src/app/services/camisetas.ts)
+
+    import { Injectable, inject } from '@angular/core';
+    import { HttpClient } from '@angular/common/http';
+    import { Observable } from 'rxjs';
+
+    // ... (Interfaz Camiseta omitida para brevedad)
+
+    @Injectable({ providedIn: 'root' })
+    export class CamisetasService {
+    private http = inject(HttpClient);
+    private apiUrl = 'http://localhost:3000/camisetas'; // La dirección del servidor (Paso 2)
+
+    getCamisetasPorEquipo(nombreEquipo: string): Observable<Camiseta[]> {
+        const nombreCodificado = encodeURIComponent(nombreEquipo);
+        
+        // Hace la petición GET real: http://localhost:3000/camisetas/Real%20Madrid
+        return this.http.get<Camiseta[]>(`${this.apiUrl}/${nombreCodificado}`);
+    }
+    }
+
+
+5. ARCHIVO QUE COORDINA CUANDO LLAMAR AL SERVICIO Y DONDE GUARDAR LOS DATOS (frontend/src/app/pages/camisetas/camisetas.ts)
+
+    export class Camisetas {
+    // ... imports e inyecciones ...
+    camisetas: any[] = []; // Aquí se guardarán los datos descargados
+    nombreEquipoActual: string = '';
+
+    constructor(private injector:Injector) {
+        this.route.paramMap.pipe(takeUntilDestroyed()).subscribe(params => {
+            const nombreEquipo = params.get('id'); // Detecta cambios en la URL del navegador
+            
+            if (nombreEquipo) {
+            this.nombreEquipoActual = nombreEquipo;
+            this.cargarCamisetas(nombreEquipo); // <--- Llama a la función de abajo
+            }
+        });
+    } 
+
+    cargarCamisetas(nombre: string) {
+        this.camisetasService.getCamisetasPorEquipo(nombre) // Usa el servicio del Paso 4
+        .subscribe({
+            next: (data) => {
+            this.camisetas = data; // <--- ¡AQUÍ LLEGAN LOS DATOS! Se guardan en la variable.
+            },
+            error: (err) => { /* manejo de error */ }
+        });
+    }
+    }
+
+    this.camisetas = data: Esta es la línea mágica. Cuando el servidor responde, Angular toma esos datos (data) y los mete en la variable this.camisetas. Al cambiar esta variable, el HTML (paso siguiente) reacciona automáticamente.
+
+
+6. MOSTRAMOS LAS CAMISETAS EN EL HTML (frontend/src/app/pages/camisetas/camisetas.html)
+
+    <div class="container">
+    <h1>Camisetas del {{ nombreEquipoActual }}</h1>
+
+    <div class="grid-camisetas">
+        @for (camiseta of camisetas; track camiseta.id) {
+        <div class="card">
+            <img [src]="camiseta.imagen_principal" alt="Camiseta">
+            
+            <h3>{{ camiseta.descripcion }}</h3> 
+            <p>Precio: {{ camiseta.precio }} €</p>
+        </div>
+        }
+    </div>
+    </div>

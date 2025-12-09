@@ -1,0 +1,38 @@
+CONFIGURAR AUTH0
+
+1.Crear una aplicación en auth0
+
+2.En las opciones(Allowed Callback URLs,Allowed Logout URLs,Allowed Web Origins,Allowed Origins(CORS)) debemos poner la URL que estemos utilizando,si estamos en local pues por ejemplo ->http://localhost:4200 
+Y activar las opciones de -> Allow Cross-Origin Authentication,Set Idle Refresh Token Lifetime,Allow Refresh Token Rotation
+
+3.Instalar auth0 en nuestro proyecto angular -> npm install @auth0/auth0-angular
+
+4.En app.config.ts añadir estas líneas provideAuth0({
+      						domain: 'dev-32mzzfaff4uprtnv.us.auth0.com',
+                                                clientId: 'T7ZO8gLy6JiD0DMT0zOGMkeIxLf5nGtf',
+						useRefreshTokens: true,
+      						cacheLocation: 'localstorage',
+                                                authorizationParams: {
+                                                redirect_uri: window.location.origin
+                                                  }
+                                                })
+- Con su respectivo domain,clientId que tenga la aplicación de auth0
+
+5.Implementar authservice y router en el header por ejemplo.
+constructor(private router:Router, public authService:AuthService){}
+auhService contiene la informacion del usuario
+
+6.Crear una función login(){this.authService.loginWithRedirect()}
+Y esta función al usarla nos llevara al login de auth0.
+
+7.Crear una función logout(){this.authService.logout({logoutParams: { returnTo: window.location.origin }});} para que que si has hecho login puedas cerrar sesion implementandolo en un boton y al hacer click pues hacer logout.
+
+8.Implementar esta linea para obtener los datos del usuario que esta logueado y poder usar esa información y evitamos fugas de memoria.
+this.authService.user$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(user => console.log(user));
+
+9.Implementar esta linea para obtener los claims del token de autenticación 
+this.authService.idTokenClaims$.subscribe(claims => { console.log("Token claims:",claims) })
+
+10.Implementar esta linea sirve para saber si el usuario está autenticado o no, y actuar en consecuencia.
+this.authService.isAuthenticated$.subscribe((isAuthenticated) => { 
+if(isAuthenticated){ this.router.navigate(["/inicio"]) } })	
