@@ -1,14 +1,14 @@
 import { Component, Injector, OnInit, inject, runInInjectionContext } from '@angular/core'; // Añadimos 'inject'
 import { CamisetasService } from '../../services/camisetas';
-import { ActivatedRoute } from '@angular/router';
-import { CommonModule } from '@angular/common'; 
+import { ActivatedRoute } from '@angular/router'; 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'; // ⬅️ Nuevo para limpieza de memoria
+import { Header } from '../../components/header/header';
 
 
 @Component({
   selector: 'app-camisetas',
   standalone: true,
-  imports: [CommonModule], 
+  imports: [Header], 
   templateUrl: './camisetas.html'
 })
 export class Camisetas{
