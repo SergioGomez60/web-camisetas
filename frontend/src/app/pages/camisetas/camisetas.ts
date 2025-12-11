@@ -1,22 +1,31 @@
 import { Component, Injector, OnInit, inject, runInInjectionContext } from '@angular/core'; // Añadimos 'inject'
 import { CamisetasService } from '../../services/camisetas';
-import { ActivatedRoute } from '@angular/router'; 
+import { ActivatedRoute, RouterLink } from '@angular/router'; 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'; // ⬅️ Nuevo para limpieza de memoria
 import { Header } from '../../components/header/header';
+import { Footer } from '../../components/footer/footer';
 
+export interface Camiseta {
+  id: number;
+  descripcion: string;
+  precio: number;
+  imagen_principal: string;
+  
+}
 
 @Component({
   selector: 'app-camisetas',
   standalone: true,
-  imports: [Header], 
-  templateUrl: './camisetas.html'
+  imports: [Header, Footer, RouterLink], 
+  templateUrl: './camisetas.html',
+  styleUrl: './camisetas.css'
 })
 export class Camisetas{
   // Usamos 'inject' para obtener dependencias de forma moderna
   private route = inject(ActivatedRoute); 
   private camisetasService = inject(CamisetasService);
   
-  camisetas: any[] = [];
+  camisetas: Camiseta[] = [];
   error: string = '';
   nombreEquipoActual: string = '';
 

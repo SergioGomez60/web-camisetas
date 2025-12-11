@@ -1,6 +1,6 @@
 // src/app/services/camisetas.service.ts
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 // Define la interfaz de la camiseta para tipado seguro
@@ -30,5 +30,14 @@ export class CamisetasService {
     
     // Llama a tu endpoint de Node.js: http://localhost:3000/camisetas/equipo/Real%20Madrid
     return this.http.get<Camiseta[]>(`${this.apiUrl}/${nombreCodificado}`);
+  }
+
+  
+  getCamisetaPorDescripcion(descripcion: string) {
+    // Configuras los parámetros
+  const params = new HttpParams().set('descripcion', descripcion); // Para evitar errorees de espacios o simbolos usamos httparams.
+
+  // Pasas las opciones como segundo argumento
+  return this.http.get<Camiseta[]>(`${this.apiUrl}/camisetas`, { params });
   }
 }
