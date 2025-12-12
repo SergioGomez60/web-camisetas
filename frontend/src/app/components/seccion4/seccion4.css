@@ -70,8 +70,8 @@
 
 .titulo-seccion4::after {
   content: "";
-  width: 80%;
   height: 3px;
+  width: 73%;
   background: #9EFF00; 
   position: absolute;
   bottom: -8px;

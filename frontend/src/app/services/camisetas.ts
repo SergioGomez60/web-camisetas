@@ -33,11 +33,8 @@ export class CamisetasService {
   }
 
   
-  getCamisetaPorDescripcion(descripcion: string) {
-    // Configuras los parámetros
-  const params = new HttpParams().set('descripcion', descripcion); // Para evitar errorees de espacios o simbolos usamos httparams.
-
+  getCamisetaPorId(id: number) {
   // Pasas las opciones como segundo argumento
-  return this.http.get<Camiseta[]>(`${this.apiUrl}/camisetas`, { params });
+  return this.http.get<Camiseta>(`${this.apiUrl}/camisetas/${id}`);
   }
 }

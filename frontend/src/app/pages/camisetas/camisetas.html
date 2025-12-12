@@ -11,7 +11,7 @@
 
   <div class="camisetas">
     @for (camiseta of camisetas; track camiseta.id) {
-      <div [routerLink]="['/camiseta',camiseta.descripcion]" class="camiseta">
+      <div [routerLink]="['/camiseta',camiseta.id,camiseta.descripcion]" class="camiseta">
         <img [src]="camiseta.imagen_principal" alt="Camiseta">
         <h3>{{ camiseta.descripcion }}</h3> 
         <p>{{ camiseta.precio }}€</p>
