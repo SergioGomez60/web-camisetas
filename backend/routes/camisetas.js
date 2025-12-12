@@ -26,4 +26,5 @@ router.get("/:nombreEquipo", async (req,res) => {
     }
 })
 
+
 export default router;
