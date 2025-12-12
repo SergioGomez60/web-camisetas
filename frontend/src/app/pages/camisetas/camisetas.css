@@ -1,15 +1,20 @@
 .container{
     margin-top: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: fit-content;
+    padding: 10px;
+    margin-left: auto;   /* Centra la caja en la pantalla */
+    margin-right: auto;    
+    max-width: 100%;
 }
 
 .container h1{
     font-size: 25px;
-    margin-left: 15px;
+    position: relative;
+    width: fit-content; /* CLAVE: El h1 se ajusta al tamaño del texto */
 }
 
 .container h4{
-    margin-left: 15px;
     margin-top: 10px;
     color: rgb(80, 80, 80);
 }
@@ -17,10 +22,10 @@
 .container h1::after{
   content: '';
   display: block;
-  width: 73%; 
+  width: 100%; 
   height: 4px; 
   background-color: #7ED957; 
-  margin-top: 8px; 
+  margin-top: 5px; 
   border-radius: 4px; 
 }
 
@@ -28,14 +33,15 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+    max-width: 200px;
 }
 
 .camisetas{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 10px;
     margin-top: 20px;
     gap: 10px;
+    justify-items: center;
 }
 
 .camiseta img{
@@ -62,4 +68,117 @@
 
 .camiseta:hover{
     cursor: pointer;
+}
+
+
+/* ----------- TABLET ----------- */
+@media screen and (min-width: 650px) {
+
+    .container h1{
+        font-size: 30px;
+    }
+
+    .container h4{
+        font-size: 15px;
+    }
+
+    .camisetas{
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 30px;
+        gap: 20px;
+    }
+
+    .camiseta{
+        max-width: 240px;
+    }
+
+    .camiseta img{
+        width: 240px;
+        height: 240px;
+    }
+
+    .camiseta h3{
+        font-size: 17px;
+    }
+}
+
+
+/* ----------- PORTATIL ----------- */
+@media screen and (min-width: 1000px) {
+
+    .container h1{
+        font-size: 40px;
+    }
+
+    .container h1::after{
+        margin-top: 9px;
+    }
+
+    .container h4{
+        font-size: 20px;
+        margin-top: 20px;
+    }
+
+    .camisetas{
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 25px;
+        
+        margin-top: 40px;
+    }
+
+    .camiseta{
+        max-width: 300px;
+    }
+
+    .camiseta img{
+        width: 300px;
+        height: 300px;
+    }
+
+    .camiseta h3{
+        font-size: 20px;
+    }
+
+    .camiseta p{
+        font-size: 20px;
+    }
+}
+
+
+/* ----------- MONITOR ----------- */
+@media screen and (min-width: 1400px) {
+
+    .container h1{
+        font-size: 40px;
+    }
+
+    .container h1::after{
+        margin-top: 9px;
+    }
+
+    .container h4{
+        font-size: 20px;
+    }
+
+    .camisetas{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 35px;
+    }
+
+    .camiseta{
+        max-width: 330px;
+    }
+
+    .camiseta img{
+        width: 330px;
+        height: 330px;
+    }
+
+    .camiseta h3{
+        font-size: 20px;
+    }
+
+    .camiseta p{
+        font-size: 20px;
+    }
 }
