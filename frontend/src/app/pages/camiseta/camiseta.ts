@@ -26,9 +26,10 @@ export class CamisetaComponent implements OnInit{
     }
   }
 
-  cargarCamiseta(id:number){
+  cargarCamiseta(id: number) {
+    this.loading = true; // Reiniciar loading al cambiar
     this.camisetasService.getCamisetaPorId(id).subscribe({
-      next:(data) => {
+      next: (data) => {
         this.camiseta = data;
         this.loading = false;
       },

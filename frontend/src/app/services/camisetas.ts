@@ -33,8 +33,7 @@ export class CamisetasService {
   }
 
   
-  getCamisetaPorId(id: number) {
-  // Pasas las opciones como segundo argumento
-  return this.http.get<Camiseta>(`${this.apiUrl}/camisetas/${id}`);
+  getCamisetaPorId(id: number): Observable<Camiseta> {
+    return this.http.get<Camiseta>(`${this.apiUrl}/detalle/${id}`);
   }
 }
