@@ -237,6 +237,10 @@ nav {
   color: white;
 }
 
+.item-mini img{
+  width: 100px;
+}
+
 
 /************************** BUSCADOR *********************/
 .buscador{

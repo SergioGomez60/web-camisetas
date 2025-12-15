@@ -4,7 +4,7 @@
     <img [src]="camiseta?.imagen_principal" alt="imagen">
     <h3>{{ camiseta?.descripcion }}</h3>
     <p>{{ camiseta?.precio }}€</p>
-    <button>Añadir al carrito 🛒</button>
+    <button (click)="agregarAlCarrito()">Añadir al carrito 🛒</button>
 </div>
 
 <p class="info-camiseta">{{ informacion_camiseta }}</p>

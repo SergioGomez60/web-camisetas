@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { CarritoService } from '../../services/carrito';
 
 
 interface Equipo { nombre: string }
@@ -22,7 +23,7 @@ export class Header{
   mostrarCarrito = false;
   isAuthenticated = signal(false);
 
-  constructor(private router:Router, public authService:AuthService) {
+  constructor(private router:Router, public authService:AuthService,public carritoService:CarritoService) {
     this.secciones = [
       {
         nombre: "Clubes 25/26",
