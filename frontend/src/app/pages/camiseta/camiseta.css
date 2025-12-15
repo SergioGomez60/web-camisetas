@@ -1,0 +1,56 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    gap: 8px;
+}
+
+.container img{
+    width: 350px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.container h3{
+    font-size: 25px;
+    margin-left: 10px;
+    max-width: 70%;
+}
+
+.container p{
+    margin-left: 10px;
+    font-size: 20px;
+    color: #7ED957;
+}
+
+.container button{
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    background-color: #7ED957;
+    color: white;
+    scale: 1;
+    transition: 0.3s;
+}
+
+.container button:hover{
+    cursor: pointer;
+    scale: 1.1;
+    transition: 0.3s;
+}
+
+.info-camiseta{
+    margin-left: 10px;
+    margin-right: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.envios{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

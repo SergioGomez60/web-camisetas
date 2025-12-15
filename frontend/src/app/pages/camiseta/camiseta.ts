@@ -15,6 +15,7 @@ import { Camiseta } from '../../services/camisetas';
 export class CamisetaComponent implements OnInit{
   camiseta: Camiseta | undefined;
   loading: boolean = true;
+  informacion_camiseta: string = "Esta camiseta está fabricada con tejido deportivo de alta tecnología, diseñado para ofrecer la máxima comodidad y transpirabilidad. Su corte ergonómico se adapta perfectamente al cuerpo, permitiendo total libertad de movimiento tanto dentro como fuera del campo. Cuenta con acabados premium y detalles bordados que garantizan una gran durabilidad lavado tras lavado. Ideal para practicar deporte o para lucir un estilo casual deportivo.";
 
   constructor(private route:ActivatedRoute,private camisetasService: CamisetasService){}
 

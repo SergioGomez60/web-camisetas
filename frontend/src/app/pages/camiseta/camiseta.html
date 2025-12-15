@@ -2,10 +2,32 @@
 
 <div class="container">
     <img [src]="camiseta?.imagen_principal" alt="imagen">
+    <h3>{{ camiseta?.descripcion }}</h3>
+    <p>{{ camiseta?.precio }}€</p>
+    <button>Añadir al carrito 🛒</button>
 </div>
 
+<p class="info-camiseta">{{ informacion_camiseta }}</p>
 
-
+<div class="envios">
+    <div>
+        <h3>ESPAÑA</h3>
+        <p>24-48h</p>
+    </div>
+    <div>
+        <h3>CANARIAS</h3>
+        <p>3-5 días</p>
+    </div>
+    <div>
+        <h3>EUROPA</h3>
+        <p>2-7 días</p>
+    </div>
+    <div>
+        <h3>MUNDO</h3>
+        <p>3-8 días</p>
+    </div>
+    
+</div>
 
 
 <app-footer></app-footer>
