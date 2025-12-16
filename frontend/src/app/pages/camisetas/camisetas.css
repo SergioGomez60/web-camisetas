@@ -70,6 +70,12 @@
     cursor: pointer;
 }
 
+.alert-error{
+    font-size: 15px;
+    text-align: center;
+    margin-top: 10px;
+}
+
 
 /* ----------- TABLET ----------- */
 @media screen and (min-width: 650px) {
@@ -99,6 +105,11 @@
 
     .camiseta h3{
         font-size: 17px;
+    }
+
+    .alert-error{
+        font-size: 20px;
+        margin-top: 15px;
     }
 }
 
@@ -141,6 +152,11 @@
 
     .camiseta p{
         font-size: 20px;
+    }
+
+    .alert-error{
+        font-size: 25px;
+        margin-top: 20px;
     }
 }
 
