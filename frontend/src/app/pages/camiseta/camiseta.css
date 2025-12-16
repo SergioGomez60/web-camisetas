@@ -79,6 +79,29 @@
     .container img{
         width: 500px;
     }
+
+    .container h3{
+        text-align: center;
+        max-width: none;
+    }
+
+    .container p{
+        text-align: center;
+    }
+
+    .container button{
+        max-width: 50%;
+    }
+
+    .info-camiseta{
+        max-width: 50%;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    .envios{
+        max-width: 50%;
+    }
 }
 
 
@@ -90,5 +113,9 @@
 
     .container button{
         width: 50%;
+    }
+
+    .container button{
+        max-width: 30%;
     }
 }
