@@ -3,31 +3,27 @@
 <div class="container">
     <img [src]="camiseta?.imagen_principal" alt="imagen">
     <h3>{{ camiseta?.descripcion }}</h3>
-    <p>{{ camiseta?.precio }}€</p>
+    <p class="precio">{{ camiseta?.precio }}€</p>
 
     @if(camiseta?.tallas && camiseta.tallas.length > 0) {
         <div class="selector-tallas">
-            <p class="titulo-tallas">Selecciona tu talla:</p>
+            <p><strong>Elige Talla: {{ tallaSeleccionada }}</strong></p>
             <div class="grid-tallas">
                 @for (talla of camiseta.tallas; track $index) {
-                    <button
-                        class="btn-talla"
-                         
+                    <button 
+                        class="btn-talla" 
                         [class.seleccionada]="talla === tallaSeleccionada"
                         (click)="seleccionarTalla(talla)">
                         {{ talla }}
                     </button>
                 }
             </div>
-            @if(!tallaSeleccionada && camiseta) {
-                <small style="color: #666; font-style: italic;">(Debes elegir una talla)</small>
-            }
         </div>
-    } @else if (camiseta) {
-         <p style="color: #e74c3c; font-weight: bold;">🚫 Agotado temporalmente.</p>
+    } @else {
+        <p style="color:red">🚫 Agotado temporalmente</p>
     }
 
-    <button (click)="agregarAlCarrito()">Añadir al carrito 🛒</button>
+    <button class="btn-pagar" (click)="agregarAlCarrito()">Añadir al carrito 🛒</button>
 </div>
 
 <p class="info-camiseta">{{ informacion_camiseta }}</p>

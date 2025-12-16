@@ -41,6 +41,7 @@
                   <img [src]="item.imagen_principal" class="img-mini">
                   <div class="info-mini">
                     <p class="desc-mini">{{ item.descripcion }}</p>
+                    <p>Talla: {{ item.talla }}</p>
                     <p class="precio-mini">{{ item.precio }}€</p>
                   </div>
                   <button class="btn-borrar-mini" (click)="carritoService.eliminarProducto($index)">

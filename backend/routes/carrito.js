@@ -8,10 +8,12 @@ const router = express.Router();
 router.get("/:usuario_id", async (req, res) => {
     try {
         const usuarioId = req.params.usuario_id;
-        // Unimos la tabla carrito con camisetas para saber qué producto es
+        
+        // CORRECCIÓN: Añadimos 'car.talla' al SELECT
         const [items] = await db.query(
             `SELECT 
                 car.id as carrito_id, 
+                car.talla,  /* <--- ¡ESTO FALTABA! */
                 c.* FROM carrito car
              JOIN camisetas c ON car.camiseta_id = c.id
              WHERE car.usuario_id = ?`,
