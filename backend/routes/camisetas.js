@@ -6,22 +6,28 @@ const router = express.Router();
 router.get("/detalle/:id", async (req, res) => {
     try {
         const id = req.params.id;
-        // Seleccionamos la camiseta por su ID
-        const [camiseta] = await db.query(
-            `SELECT * FROM camisetas WHERE id = ?`,
+        
+        // 1. Datos de la camiseta
+        const [rows] = await db.query('SELECT * FROM camisetas WHERE id = ?', [id]);
+        
+        if (rows.length === 0) return res.status(404).json({ error: 'No existe' });
+
+        const camiseta = rows[0];
+
+        // 2. Tallas disponibles (NUEVO)
+        const [tallasRows] = await db.query(
+            'SELECT talla FROM camisetas_tallas WHERE id_camiseta = ?', 
             [id]
         );
-        
-        // Si no se encuentra, devolvemos 404
-        if (camiseta.length === 0) {
-            return res.status(404).json({ error: 'Camiseta no encontrada' });
-        }
 
-        // Devolvemos solo el primer objeto (ya que el ID es único)
-        res.json(camiseta[0]);
+        // Convertimos [{talla: 'S'}, {talla: 'M'}] -> ['S', 'M']
+        camiseta.tallas = tallasRows.map(row => row.talla);
+
+        res.json(camiseta);
+
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: 'Error obteniendo la camiseta' });
+        res.status(500).json({ error: 'Error del servidor' });
     }
 });
 
