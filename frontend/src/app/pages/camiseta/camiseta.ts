@@ -61,4 +61,4 @@ export class CamisetaComponent implements OnInit {
       this.carritoService.agregarProducto(this.camiseta, this.tallaSeleccionada);
     }
   }
-}
+} 
