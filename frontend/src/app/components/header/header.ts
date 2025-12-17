@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthService, User } from '@auth0/auth0-angular';
 import { CarritoService } from '../../services/carrito';
 
 
@@ -22,6 +22,7 @@ export class Header{
   mostrarBuscador = false;
   mostrarCarrito = false;
   isAuthenticated = signal(false);
+  user = signal<User | null | undefined>(null);
 
   constructor(private router:Router, public authService:AuthService,public carritoService:CarritoService) {
     this.secciones = [
@@ -161,12 +162,13 @@ export class Header{
       this.isAuthenticated.set(value);
     });
 
+    this.authService.user$.subscribe(perfil => {
+      this.user.set(perfil);
+      console.log(perfil);
+    });
+
 
   }  
-
-  // header.ts (Dentro de la clase Header)
-
-// ...
 
 // Nueva función para navegar y cerrar menús después de hacer clic en un equipo
 navegarYcerrarMenu() {

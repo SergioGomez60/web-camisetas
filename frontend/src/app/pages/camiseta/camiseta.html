@@ -7,13 +7,10 @@
 
     @if(camiseta?.tallas && camiseta.tallas.length > 0) {
         <div class="selector-tallas">
-            <p><strong>Elige Talla: {{ tallaSeleccionada }}</strong></p>
+            <p class="texto-tallas"><strong>Tallas:</strong></p>
             <div class="grid-tallas">
                 @for (talla of camiseta.tallas; track $index) {
-                    <button 
-                        class="btn-talla" 
-                        [class.seleccionada]="talla === tallaSeleccionada"
-                        (click)="seleccionarTalla(talla)">
+                    <button class="btn-talla" [class.seleccionada]="talla === tallaSeleccionada" (click)="seleccionarTalla(talla)">
                         {{ talla }}
                     </button>
                 }
@@ -23,7 +20,7 @@
         <p style="color:red">🚫 Agotado temporalmente</p>
     }
 
-    <button class="btn-pagar" (click)="agregarAlCarrito()">Añadir al carrito 🛒</button>
+    <button class="anadir-carrito" (click)="agregarAlCarrito()">Añadir al carrito 🛒</button>
 </div>
 
 <p class="info-camiseta">{{ informacion_camiseta }}</p>

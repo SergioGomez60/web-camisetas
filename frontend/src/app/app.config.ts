@@ -11,8 +11,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     provideAuth0({
-      domain: 'dev-32mzzfaff4uprtnv.us.auth0.com',
-      clientId: 'T7ZO8gLy6JiD0DMT0zOGMkeIxLf5nGtf',
+      domain: 'dev-ibiecj785me6vdl8.eu.auth0.com',
+      clientId: 'y9vSme4jIca2Vyinec7UOgUnlFOxBYZg',
       useRefreshTokens: true,
       cacheLocation: 'localstorage',
       authorizationParams: {

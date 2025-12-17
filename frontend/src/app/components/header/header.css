@@ -175,6 +175,11 @@ nav {
   padding: 10px 14px;
 }
 
+.bienvenida{
+  margin-left: 10px;
+  color: #7ED957;
+}
+
 
 
 /************************** CARRITO *********************/
@@ -445,6 +450,10 @@ nav {
   }
 
   .logout{
+    display: none;
+  }
+
+  .bienvenida{
     display: none;
   }
 

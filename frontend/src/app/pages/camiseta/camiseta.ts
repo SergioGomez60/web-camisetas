@@ -23,7 +23,7 @@ export class CamisetaComponent implements OnInit {
   loading: boolean = true;
   tallaSeleccionada: string = ''; // <--- Variable nueva
   
-  informacion_camiseta: string = "Esta camiseta está fabricada con tejido deportivo...";
+  informacion_camiseta: string = '"Esta camiseta ha sido diseñada para ofrecer el máximo rendimiento tanto en el campo como en la grada. Fabricada con tejido técnico transpirable de última generación, garantiza una ventilación óptima y mantiene la piel seca en todo momento. Su corte ergonómico se adapta al cuerpo permitiendo una total libertad de movimiento, mientras que los acabados premium y el escudo bordado aseguran una durabilidad excepcional. La prenda definitiva para lucir tus colores con orgullo y comodidad."';
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {

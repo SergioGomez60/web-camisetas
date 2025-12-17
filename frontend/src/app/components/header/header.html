@@ -74,6 +74,9 @@
     }
 
   <ul class="secciones" [class.mostrar-secciones]="mostrarMenu">
+    @if(isAuthenticated()){
+      <h3 class="bienvenida">¡Bienvenido {{ user()?.nickname }}!</h3>
+    }
     @for (seccion of secciones; track $index) {
       <li class="seccion">
         <div (click)="toggleSeccion(seccion)">
