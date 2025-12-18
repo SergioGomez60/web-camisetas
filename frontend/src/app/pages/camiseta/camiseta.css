@@ -48,16 +48,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 18px;
     margin-top: 20px;
-}
-
-.envios{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 40px auto;
-    text-align: center;
-    gap: 30px;
-    background-color: rgb(172, 172, 172);
-    padding: 20px;
+    margin-bottom: 10px;
 }
 
 .selector-tallas{
@@ -129,10 +120,6 @@
         max-width: 50%;
         margin: 0 auto;
         margin-top: 20px;
-    }
-
-    .envios{
-        max-width: 50%;
     }
 
     .selector-tallas{

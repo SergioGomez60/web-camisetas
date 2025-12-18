@@ -238,12 +238,41 @@ nav {
   border-radius: 25px;
   padding: 15px;
   border: none;
-  background-color: rgb(129, 186, 61);
+  background-color: #7ED957;
   color: white;
 }
 
-.item-mini img{
+.boton-comprar:hover{
+  cursor: pointer;
+}
+
+.img-mini{
   width: 100px;
+}
+
+.basura-btn img{
+  width: 20px;
+}
+
+.basura-btn{
+  border: none;
+  background: none;
+}
+
+.basura-btn img{
+  cursor: pointer;
+}
+
+.item-mini{
+  display:flex ;
+  align-items: center;
+  padding: 30px;
+  font-weight: bold;
+  gap: 10px;
+}
+
+.resumen-mini{
+  padding: 10px;
 }
 
 

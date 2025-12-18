@@ -44,8 +44,8 @@
                     <p>Talla: {{ item.talla }}</p>
                     <p class="precio-mini">{{ item.precio }}€</p>
                   </div>
-                  <button class="btn-borrar-mini" (click)="carritoService.eliminarProducto($index)">
-                    🗑️
+                  <button class="basura-btn" (click)="carritoService.eliminarProducto($index)">
+                    <img src="assets/basura.png" alt="basura">
                   </button>
                 </div>
               }
