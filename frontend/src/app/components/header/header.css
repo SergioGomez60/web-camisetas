@@ -352,6 +352,36 @@ nav {
     .logout{
       display: none;
     }
+
+    .item-mini{
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .img-mini{
+      width: 150px;
+    }
+
+    .basura-btn img{
+      width: 30px;
+    }
+
+    .desc-mini{
+      font-size: 20px;
+    }
+
+    .info-mini{
+      font-size: 18px;
+    }
+
+    .fila-total{
+      font-size: 20px;
+    }
+
+    .boton-comprar{
+      font-size: 20px;
+      margin-top: 10px;
+    }
 }
 
 /* ----------- ESCRITORIO ----------- */
