@@ -76,6 +76,32 @@ export class CarritoService {
     });
   }
 
+  agregarCaja(caja: any, talla: string) {
+    if (!this.usuarioId) {
+        alert("🔒 Inicia sesión para comprar");
+        this.auth.loginWithRedirect();
+        return;
+    }
+
+    if (!talla) {
+        alert("⚠️ Por favor, selecciona una talla.");
+        return;
+    }
+
+    // Enviamos 'caja_id' en lugar de 'camiseta_id'
+    this.http.post(this.apiUrl, { 
+        usuario_id: this.usuarioId, 
+        caja_id: caja.id, // <--- CAMBIO IMPORTANTE
+        talla: talla 
+    }).subscribe({
+        next: () => {
+            this.cargarCarrito();
+            alert(`✅ Caja añadida al carrito`);
+        },
+        error: (err) => console.error("Error añadiendo caja:", err)
+    });
+  }
+
   eliminarProducto(index: number) { 
     const item = this.carritoSignal()[index];
     if(!item) return;

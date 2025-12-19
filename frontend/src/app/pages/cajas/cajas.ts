@@ -15,7 +15,7 @@ export class Cajas implements OnInit{
   cajas: Caja[] = [];
 
   ngOnInit(): void {
-    
+    this.cargarCajas();
   }
 
   cargarCajas(){

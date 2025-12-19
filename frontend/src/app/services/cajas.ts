@@ -8,6 +8,7 @@ export interface Caja {
   descripcion: string;
   precio: number;
   imagen: string;
+  tallas?: string[];
 }
 
 @Injectable({
@@ -21,5 +22,9 @@ export class CajasService {
 
   getCajas(): Observable<Caja[]>{
     return this.http.get<Caja[]>(this.apiUrl);
+  }
+
+  getCajaPorId(id: number): Observable<Caja> {
+    return this.http.get<Caja>(`${this.apiUrl}/${id}`);
   }
 }

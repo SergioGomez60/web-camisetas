@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+
+<div class="container">
+    <img [src]="caja?.imagen" alt="imagen">
+    <h3>{{ caja?.descripcion }}</h3>
+    <p class="precio">{{ caja?.precio }}€</p>
+
+    @if(caja?.tallas && caja.?.tallas.length > 0) {
+        <div class="selector-tallas">
+            <p class="texto-tallas"><strong>Tallas:</strong></p>
+            <div class="grid-tallas">
+                @for (talla of caja.tallas; track $index) {
+                    <button class="btn-talla" [class.seleccionada]="talla === tallaSeleccionada" (click)="seleccionarTalla(talla)">
+                        {{ talla }}
+                    </button>
+                }
+            </div>
+        </div>
+    } @else {
+        <p style="color:red">🚫 Agotado temporalmente</p>
+    }
+
+    <button class="anadir-carrito" (click)="agregarAlCarrito()">Añadir al carrito 🛒</button>
+</div>
+
+<p class="info-camiseta">{{ informacion_camiseta }}</p>
+
+
+
+
+<app-footer></app-footer>
+

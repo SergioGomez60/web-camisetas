@@ -27,20 +27,28 @@ router.get("/:usuario_id", async (req, res) => {
 });
 
 // 2. AÑADIR AL CARRITO (POST)
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
+    const { usuario_id, camiseta_id, caja_id, talla } = req.body; // <--- Añade caja_id
+
     try {
-        // Ahora recibimos también la 'talla'
-        const { usuario_id, camiseta_id, talla } = req.body;
+        if (camiseta_id) {
+            // Lógica existente para camisetas
+            await db.query(
+                'INSERT INTO carrito (id_usuario, id_camiseta, talla, cantidad) VALUES (?, ?, ?, 1)',
+                [usuario_id, camiseta_id, talla]
+            );
+        } else if (caja_id) {
+            // NUEVA Lógica para cajas
+            await db.query(
+                'INSERT INTO carrito (id_usuario, id_caja, talla, cantidad) VALUES (?, ?, ?, 1)',
+                [usuario_id, caja_id, talla]
+            );
+        }
         
-        await db.query(
-            `INSERT INTO carrito (usuario_id, camiseta_id, talla) VALUES (?, ?, ?)`,
-            [usuario_id, camiseta_id, talla]
-        );
-        
-        res.json({ message: 'Producto añadido con talla' });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Error al añadir' });
+        res.json({ message: 'Añadido al carrito' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al añadir al carrito' });
     }
 });
 

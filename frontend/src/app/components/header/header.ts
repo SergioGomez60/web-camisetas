@@ -202,6 +202,13 @@ navegarYcerrarMenu() {
 
 
   toggleSeccion(seccion: Seccion) {
+
+    if ( seccion.nombre === 'Cajas Sorpresa') {
+          this.router.navigate(['/cajas']); 
+          this.navegarYcerrarMenu();        
+          return;                           
+      }
+
       this.secciones.forEach(s => { if (s !== seccion) s.abierta = false; });
       seccion.abierta = !seccion.abierta;
   }
