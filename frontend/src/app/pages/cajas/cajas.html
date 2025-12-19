@@ -1,1 +1,26 @@
-<p>cajas works!</p>
+<app-header></app-header>
+
+<div class="container-cajas">
+    <h1>Elige tu Caja Sorpresa</h1>
+    
+    <div class="grid-cajas">
+        @for (caja of cajas; track caja.id) {
+            <div class="card-caja">
+                <img [src]="caja.imagen" [alt]="caja.nombre">
+                
+                <div class="info-caja">
+                    <h3>{{ caja.nombre }}</h3>
+                    <p class="desc">{{ caja.descripcion }}</p>
+                    <p class="precio">{{ caja.precio }} €</p>
+                    <button class="btn-comprar">Añadir al carrito</button>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (cajas.length === 0) {
+        <p>Cargando cajas disponibles...</p>
+    }
+</div>
+
+<app-footer></app-footer>
