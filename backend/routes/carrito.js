@@ -9,17 +9,53 @@ router.get("/:usuario_id", async (req, res) => {
     try {
         const usuarioId = req.params.usuario_id;
         
-        // CORRECCIÓN: Añadimos 'car.talla' al SELECT
+        // Usamos LEFT JOIN para traer datos de camisetas O de cajas
         const [items] = await db.query(
             `SELECT 
                 car.id as carrito_id, 
-                car.talla,  /* <--- ¡ESTO FALTABA! */
-                c.* FROM carrito car
-             JOIN camisetas c ON car.camiseta_id = c.id
+                car.talla,
+                car.camiseta_id,
+                car.caja_id,
+                -- Datos Camiseta
+                c.descripcion as desc_camiseta, 
+                c.precio as precio_camiseta, 
+                c.imagen_principal as img_camiseta,
+                -- Datos Caja
+                k.nombre as nombre_caja,
+                k.precio as precio_caja,
+                k.imagen as img_caja
+             FROM carrito car
+             LEFT JOIN camisetas c ON car.camiseta_id = c.id
+             LEFT JOIN cajas k ON car.caja_id = k.id
              WHERE car.usuario_id = ?`,
             [usuarioId]
         );
-        res.json(items);
+
+        // Unificamos los datos para que el frontend no se vuelva loco
+        const itemsProcesados = items.map(item => {
+            if (item.caja_id) {
+                return {
+                    carrito_id: item.carrito_id,
+                    talla: item.talla,
+                    // Hacemos pasar la caja por una camiseta para reutilizar tu diseño de carrito
+                    descripcion: item.nombre_caja, 
+                    precio: item.precio_caja,
+                    imagen_principal: item.img_caja,
+                    es_caja: true
+                };
+            } else {
+                return {
+                    carrito_id: item.carrito_id,
+                    talla: item.talla,
+                    descripcion: item.desc_camiseta,
+                    precio: item.precio_camiseta,
+                    imagen_principal: item.img_camiseta,
+                    es_caja: false
+                };
+            }
+        });
+
+        res.json(itemsProcesados);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Error al obtener el carrito' });
