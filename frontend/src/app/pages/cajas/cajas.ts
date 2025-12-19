@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Header } from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
 import { Caja, CajasService } from '../../services/cajas';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-cajas',
-  imports: [Header,Footer],
+  imports: [Header, Footer, RouterLink],
   templateUrl: './cajas.html',
   styleUrl: './cajas.css',
 })

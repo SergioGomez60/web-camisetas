@@ -9,7 +9,7 @@
 
   <div class="cajas">
     @for (caja of cajas; track caja.id) {
-      <div class="caja">
+      <div class="caja" [routerLink]="['/caja', caja.id, caja.nombre]">
         <img [src]="caja.imagen" alt="caja">
         <h3>{{ caja.nombre }}</h3> 
         <p>{{ caja.precio }}€</p>

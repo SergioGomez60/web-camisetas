@@ -4,8 +4,7 @@
     <img [src]="caja?.imagen" alt="imagen caja">
     <h3>{{ caja?.nombre }}</h3> 
     <p class="precio">{{ caja?.precio }}€</p>
-    
-    <p class="descripcion-texto">{{ caja?.descripcion }}</p>
+
 
     @if(caja?.tallas && caja!.tallas!.length > 0) {
         <div class="selector-tallas">
