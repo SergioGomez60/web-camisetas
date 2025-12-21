@@ -4,46 +4,49 @@ import { db } from '../db.js';
 
 const router = express.Router();
 
-// 1. OBTENER EL CARRITO (GET)
+// 1. OBTENER EL CARRITO (MEJORADO PARA VER CAJAS Y CAMISETAS)
 router.get("/:usuario_id", async (req, res) => {
     try {
         const usuarioId = req.params.usuario_id;
         
-        // Usamos LEFT JOIN para traer datos de camisetas O de cajas
+        // Usamos LEFT JOIN para buscar en las dos tablas (camisetas y cajas)
+        // Si es una caja, la fila tendrá datos en las columnas de 'k', si es camiseta en 'c'
         const [items] = await db.query(
             `SELECT 
                 car.id as carrito_id, 
                 car.talla,
                 car.camiseta_id,
-                car.caja_id,
-                -- Datos Camiseta
+                car.id_caja,
+                -- Datos de Camisetas (alias c)
                 c.descripcion as desc_camiseta, 
                 c.precio as precio_camiseta, 
                 c.imagen_principal as img_camiseta,
-                -- Datos Caja
+                -- Datos de Cajas (alias k)
                 k.nombre as nombre_caja,
                 k.precio as precio_caja,
                 k.imagen as img_caja
              FROM carrito car
              LEFT JOIN camisetas c ON car.camiseta_id = c.id
-             LEFT JOIN cajas k ON car.caja_id = k.id
+             LEFT JOIN cajas k ON car.id_caja = k.id
              WHERE car.usuario_id = ?`,
             [usuarioId]
         );
 
-        // Unificamos los datos para que el frontend no se vuelva loco
+        // Procesamos los datos para unificar nombres
+        // El frontend espera: descripcion, precio, imagen_principal
         const itemsProcesados = items.map(item => {
-            if (item.caja_id) {
+            if (item.id_caja) {
+                // ES UNA CAJA: Usamos sus datos pero les ponemos los nombres que espera el HTML
                 return {
                     carrito_id: item.carrito_id,
                     talla: item.talla,
-                    // Hacemos pasar la caja por una camiseta para reutilizar tu diseño de carrito
-                    descripcion: item.nombre_caja, 
+                    descripcion: item.nombre_caja, // Usamos el nombre como descripción
                     precio: item.precio_caja,
-                    imagen_principal: item.img_caja,
-                    es_caja: true
+                    imagen_principal: item.img_caja, // Usamos la imagen de la caja
+                    es_caja: true // Marcador por si lo necesitas luego
                 };
             } else {
+                // ES UNA CAMISETA: Usamos los datos normales
                 return {
                     carrito_id: item.carrito_id,
                     talla: item.talla,
@@ -62,25 +65,22 @@ router.get("/:usuario_id", async (req, res) => {
     }
 });
 
-// 2. AÑADIR AL CARRITO (POST)
+// 2. AÑADIR AL CARRITO (Soporta ambos)
 router.post('/', async (req, res) => {
-    const { usuario_id, camiseta_id, caja_id, talla } = req.body; // <--- Añade caja_id
+    const { usuario_id, camiseta_id, id_caja, talla } = req.body;
 
     try {
         if (camiseta_id) {
-            // Lógica existente para camisetas
             await db.query(
-                'INSERT INTO carrito (id_usuario, id_camiseta, talla, cantidad) VALUES (?, ?, ?, 1)',
+                'INSERT INTO carrito (usuario_id, camiseta_id, talla, cantidad) VALUES (?, ?, ?, 1)',
                 [usuario_id, camiseta_id, talla]
             );
-        } else if (caja_id) {
-            // NUEVA Lógica para cajas
+        } else if (id_caja) {
             await db.query(
-                'INSERT INTO carrito (id_usuario, id_caja, talla, cantidad) VALUES (?, ?, ?, 1)',
-                [usuario_id, caja_id, talla]
+                'INSERT INTO carrito (usuario_id, id_caja, talla, cantidad) VALUES (?, ?, ?, 1)',
+                [usuario_id, id_caja, talla]
             );
         }
-        
         res.json({ message: 'Añadido al carrito' });
     } catch (error) {
         console.error(error);
@@ -88,7 +88,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-// 3. BORRAR DEL CARRITO (DELETE)
+// 3. BORRAR DEL CARRITO
 router.delete("/:id", async (req, res) => {
     try {
         const idCarrito = req.params.id;
