@@ -99,6 +99,15 @@ nav {
   padding: 5px;
 }
 
+.liga a{
+  text-decoration: none;
+  color: black;
+}
+
+.liga a:hover{
+  color: #7ED957;
+}
+
 .liga:hover{
 }
 
@@ -264,13 +273,13 @@ nav {
 }
 
 .item-mini{
-  display:flex ;
+  display:grid ;
+  grid-template-columns: 1fr 200px 1fr;
   align-items: center;
   padding: 30px;
   font-weight: bold;
   gap: 10px;
 }
-
 .resumen-mini{
   padding: 10px;
 }
@@ -354,6 +363,7 @@ nav {
     }
 
     .item-mini{
+      grid-template-columns: 1fr 300px 1fr;
       justify-content: center;
       gap: 20px;
     }
@@ -514,6 +524,14 @@ nav {
 
   .bienvenida{
     display: none;
+  }
+
+  .item-mini{
+    grid-template-columns: 1fr 500px 1fr;
+  }
+
+  .info-mini{
+    font-size: 22px;
   }
 
 }

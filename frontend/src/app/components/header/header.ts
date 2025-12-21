@@ -7,7 +7,7 @@ import { CarritoService } from '../../services/carrito';
 
 interface Equipo { nombre: string }
 interface Liga { nombre: string; equipos: Equipo[]; abierta?: boolean; }
-interface Seccion { nombre: string; ligas?: Liga[]; abierta?: boolean; }
+interface Seccion { nombre: string; ligas?: Liga[]; equipos?: Equipo[]; abierta?: boolean; }
 
 @Component({
   selector: 'app-header',
@@ -52,14 +52,14 @@ export class Header{
             { nombre: 'Real Oviedo' }
           ]},
           { nombre: "Premier League", equipos: [
-            { nombre: 'Arsenal' },
+            { nombre: 'Arsenal FC' },
             { nombre: 'Manchester City' },
             { nombre: 'Chelsea' },
             { nombre: 'Sunderland' },
             { nombre: 'Tottenham Hotspur' },
             { nombre: 'Aston Villa' },
             { nombre: 'Manchester United' },
-            { nombre: 'Liverpool' },
+            { nombre: 'Liverpool FC' },
             { nombre: 'Bournemouth' },
             { nombre: 'Crystal Palace' },
             { nombre: 'Brighton & Hove Albion' },
@@ -140,17 +140,17 @@ export class Header{
       },
       {
         nombre: "Selecciones 25/26",
-        ligas: [
-          { nombre: 'España', equipos:[] },
-          { nombre: 'Argentina' , equipos:[] },
-          { nombre: 'Francia' , equipos:[]},
-          { nombre: 'Inglaterra' , equipos:[] },
-          { nombre: 'Portugal' , equipos:[] },
-          { nombre: 'Países Bajos' , equipos:[] },
-          { nombre: 'Brasil' , equipos:[] },
-          { nombre: 'Bélgica' , equipos:[] },
-          { nombre: 'Croacia' , equipos:[] },
-          { nombre: 'Italia' , equipos:[] }
+        equipos: [
+          { nombre: 'España' },
+          { nombre: 'Argentina'  },
+          { nombre: 'Francia' },
+          { nombre: 'Inglaterra'  },
+          { nombre: 'Portugal'  },
+          { nombre: 'Países Bajos'  },
+          { nombre: 'Brasil'  },
+          { nombre: 'Bélgica'  },
+          { nombre: 'Croacia'  },
+          { nombre: 'Italia'  }
         ]
       },
       { nombre: 'Camisetas Retro' },

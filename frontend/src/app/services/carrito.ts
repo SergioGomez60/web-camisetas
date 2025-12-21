@@ -91,7 +91,7 @@ export class CarritoService {
     // Enviamos 'caja_id' en lugar de 'camiseta_id'
     this.http.post(this.apiUrl, { 
         usuario_id: this.usuarioId, 
-        caja_id: caja.id, // <--- CAMBIO IMPORTANTE
+        id_caja: caja.id, // <--- CAMBIO IMPORTANTE
         talla: talla 
     }).subscribe({
         next: () => {

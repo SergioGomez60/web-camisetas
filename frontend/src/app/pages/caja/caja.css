@@ -1,0 +1,144 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    gap: 8px;
+}
+
+.container img{
+    width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.container h3{
+    font-size: 25px;
+    margin-left: 10px;
+    max-width: 70%;
+}
+
+.precio{
+    margin-left: 10px;
+    font-size: 20px;
+    color: #7ED957;
+}
+
+.anadir-carrito{
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    background-color: #7ED957;
+    color: white;
+    scale: 1;
+    transition: 0.3s;
+}
+
+.container button:hover{
+    cursor: pointer;
+    scale: 1.1;
+    transition: 0.3s;
+}
+
+.info-caja{
+    margin-left: 10px;
+    margin-right: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.selector-tallas{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.grid-tallas{
+    display: flex;
+    gap: 20px;
+}
+
+.btn-talla{
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.btn-talla:hover{
+    cursor: pointer;
+}
+
+.btn-talla.seleccionada{
+    background-color: #7ED957;
+}
+
+.texto-tallas{
+    margin-left: 10px;
+    font-size: 20px;
+    color: black;
+}
+
+
+/* ----------- TABLET ----------- */
+@media screen and (min-width: 650px) {
+    .container img{
+        width: 450px;
+        padding: 10px;
+    }
+
+    .container p{
+        font-size: 25px;
+    }
+}
+
+
+/* ----------- PORTATIL ----------- */
+@media screen and (min-width: 1000px) {
+    .container img{
+        width: 500px;
+    }
+
+    .container h3{
+        text-align: center;
+        max-width: none;
+    }
+
+    .container p{
+        text-align: center;
+    }
+
+    .container button{
+        max-width: 50%;
+    }
+
+    .info-caja{
+        max-width: 50%;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+
+    .selector-tallas{
+        margin: 0 auto;
+    }
+}
+
+
+/* ----------- MONITOR ----------- */
+@media screen and (min-width: 1400px) {
+    .container img{
+        width: 600px;
+    }
+
+    .container button{
+        width: 50%;
+    }
+
+    .container button{
+        max-width: 30%;
+    }
+}

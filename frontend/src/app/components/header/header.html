@@ -81,7 +81,7 @@
       <li class="seccion">
         <div (click)="toggleSeccion(seccion)">
           {{ seccion.nombre }}
-          @if (seccion.ligas) {
+          @if (seccion.ligas || seccion.equipos) {
             <img 
               class="flecha"
               src="assets/flecha.png"
@@ -119,6 +119,19 @@
             }
           </ul>
         }
+
+        @if (seccion.equipos && seccion.abierta) {
+            <ul class="subsecciones mostrar-subsecciones">
+              @for (equipo of seccion.equipos; track equipo.nombre) {
+                <li class="liga">
+                  <a [routerLink]="['/equipo', equipo.nombre]" (click)="navegarYcerrarMenu()">
+                     {{ equipo.nombre }}
+                  </a>
+                </li>
+              }
+            </ul>
+        }
+
       </li>
     }
     @if(isAuthenticated()){
