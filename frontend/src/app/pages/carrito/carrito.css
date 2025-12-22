@@ -1,0 +1,66 @@
+.container-checkout {
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+h1 { text-align: center; margin-bottom: 40px; }
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 40px;
+}
+
+/* Estilos Resumen */
+.item-checkout {
+    display: flex;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+.item-checkout img { width: 60px; height: 60px; object-fit: contain; }
+.total-row {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #333;
+}
+
+/* Estilos Formulario */
+.datos-envio {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+}
+.campo { margin-bottom: 15px; }
+.campo label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; }
+.campo input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.fila-doble { display: flex; gap: 15px; }
+.fila-doble .campo { flex: 1; }
+
+.btn-pagar {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+}
+.btn-pagar:disabled { background-color: #ccc; }
+
+@media (max-width: 768px) {
+    .checkout-grid { grid-template-columns: 1fr; }
+}

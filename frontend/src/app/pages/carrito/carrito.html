@@ -1,0 +1,75 @@
+<app-header></app-header>
+
+<div class="container-checkout">
+    <h1>Finalizar Compra</h1>
+
+    @if (carritoService.cantidad() > 0) {
+        <div class="checkout-grid">
+            
+            <div class="resumen-pedido">
+                <h3>Tu Pedido ({{ carritoService.cantidad() }})</h3>
+                <div class="lista-items">
+                    @for (item of carritoService.carrito(); track $index) {
+                        <div class="item-checkout">
+                            <img [src]="item.imagen_principal" alt="producto">
+                            <div class="info">
+                                <p class="nombre">{{ item.descripcion }}</p>
+                                <p class="talla">Talla: {{ item.talla }}</p>
+                                <p class="precio">{{ item.precio }}€</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="total-row">
+                    <span>Total a pagar:</span>
+                    <span class="precio-final">{{ carritoService.importeTotal() }}€</span>
+                </div>
+            </div>
+
+            <div class="datos-envio">
+                <h3>Dirección de Envío</h3>
+                <form (ngSubmit)="comprar()">
+                    
+                    <div class="campo">
+                        <label>Dirección</label>
+                        <input type="text" [(ngModel)]="datosEnvio.direccion" name="direccion" placeholder="Calle, número, piso..." required>
+                    </div>
+                    
+                    <div class="fila-doble">
+                        <div class="campo">
+                            <label>Ciudad</label>
+                            <input type="text" [(ngModel)]="datosEnvio.ciudad" name="ciudad" placeholder="Madrid, Barcelona..." required>
+                        </div>
+                        <div class="campo">
+                            <label>C. Postal</label>
+                            <input type="text" [(ngModel)]="datosEnvio.codigo_postal" name="cp" placeholder="28001" required>
+                        </div>
+                    </div>
+
+                    <div class="campo">
+                        <label>País</label>
+                        <input type="text" [(ngModel)]="datosEnvio.pais" name="pais" placeholder="España" required>
+                    </div>
+
+                    <div class="tarjeta-wrapper" style="margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: white;">
+                        <label style="display:block; margin-bottom:10px; font-weight:bold;">Datos de Tarjeta</label>
+                        <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+                    </div>
+
+                    <button type="submit" class="btn-pagar" [disabled]="procesando">
+                        {{ procesando ? 'Procesando...' : 'Pagar ' + carritoService.importeTotal() + '€' }}
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+    } @else {
+        <div class="vacio">
+            <p>Tu carrito está vacío</p>
+            <button routerLink="/" class="btn-volver">Volver a la tienda</button>
+        </div>
+    }
+</div>
+
+<app-footer></app-footer>

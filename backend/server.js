@@ -3,6 +3,8 @@ import cors from 'cors';
 import camisetasRoutes from './routes/camisetas.js';
 import carritoRoutes from './routes/carrito.js';
 import cajasRoutes from './routes/cajas.js';
+import pedidosRoutes from './routes/pedidos.js';
+import pagosRoutes from './routes/pagos.js';
 
 const app = express();
 
@@ -13,6 +15,8 @@ app.use(express.json());
 app.use('/camisetas', camisetasRoutes);
 app.use('/carrito', carritoRoutes);
 app.use('/cajas', cajasRoutes);
+app.use('/pedidos', pedidosRoutes);
+app.use('/pagos', pagosRoutes)
 
 // Puerto
 const PORT = 3000;

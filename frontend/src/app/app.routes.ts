@@ -4,6 +4,7 @@ import { Camisetas } from './pages/camisetas/camisetas';
 import { CamisetaComponent } from './pages/camiseta/camiseta';
 import { Cajas } from './pages/cajas/cajas';
 import { CajaInfo } from './pages/caja/caja';
+import { CarritoPage } from './pages/carrito/carrito';
 
 export const routes: Routes = [
     {path: "", component:Inicio },
@@ -11,6 +12,7 @@ export const routes: Routes = [
     {path:"camiseta/:id/:equipacion", component:CamisetaComponent},
     {path: "cajas", component:Cajas},
     { path: 'caja/:id/:nombre', component: CajaInfo },
+    { path: 'carrito', component: CarritoPage },
     {path:"**", redirectTo: "inicio", pathMatch:"full"}, // Cuando el usuario entre a una ruta inexistente, Angular lo redirige automáticamente a auth.
                                                          // Indica que la coincidencia debe ser del path completo, no solo un prefijo.
                                 
