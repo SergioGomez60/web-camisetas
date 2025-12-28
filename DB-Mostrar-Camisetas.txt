@@ -79,7 +79,7 @@
     private http = inject(HttpClient);
     private apiUrl = 'http://localhost:3000/camisetas'; // La dirección del servidor (Paso 2)
 
-    getCamisetasPorEquipo(nombreEquipo: string): Observable<Camiseta[]> {
+    getCamisetasPorEquipo(nombreEquipo: string): Observable<Camiseta[]> { // : Observable<Camiseta[]>: Indica qué va a devolver.
         const nombreCodificado = encodeURIComponent(nombreEquipo);
         
         // Hace la petición GET real: http://localhost:3000/camisetas/Real%20Madrid
