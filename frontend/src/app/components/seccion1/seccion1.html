@@ -4,7 +4,7 @@
     <div class="camisetas">
         @if(camisetas.length > 0){
             @for (camiseta of camisetas; track camiseta.equipo) {
-                <div class="camiseta">
+                <div class="camiseta" [routerLink]="['/camiseta',camiseta.id,camiseta.descripcion]">
                     <img [src]="camiseta.imagen" [alt]="camiseta.equipo">
                     <h3>{{ camiseta.descripcion }}</h3>
                     <p>{{ camiseta.precio }}€</p>
