@@ -9,17 +9,36 @@
     @if(opcionSeleccionada === "Perfil"){
         <div class="info-perfil">
             <h3>Nombre: {{ user()?.name }}</h3>
-        
             <h3>Email: {{ user()?.email }}</h3>
-        
             <h3>Usuario: {{ user()?.nickname }}</h3>
         </div>
     }
 
-
     @if(opcionSeleccionada === "Pedidos"){
-        <div>
+        <div class="lista-pedidos">
+            @if(pedidos().length === 0) {
+                <p>No has realizado ningún pedido todavía.</p>
+            }
 
+            @for (pedido of pedidos(); track pedido._id) { <div class="pedido-card">
+                    <div class="pedido-header">
+                        <span>📅 Fecha: {{ pedido.fecha | date:'shortDate' }}</span>
+                        <span class="estado">{{ pedido.estado || 'Procesando' }}</span>
+                    </div>
+                    
+                    <div class="pedido-body">
+                        <ul>
+                            @for (item of pedido.productos; track $index) {
+                                <li>{{ item.nombre }} x{{ item.cantidad }}</li>
+                            }
+                        </ul>
+                    </div>
+
+                    <div class="pedido-footer">
+                        <strong>Total: {{ pedido.total | currency:'EUR' }}</strong>
+                    </div>
+                </div>
+            }
         </div>
     }
 </div>
