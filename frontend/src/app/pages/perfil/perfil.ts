@@ -21,15 +21,15 @@ export class Perfil {
       this.user.set(perfil);
       console.log(perfil);
 
-      if (perfil && perfil.email) {
-        this.cargarPedidos(perfil.email);
+      if (perfil && perfil.sub) {
+        this.cargarPedidos(perfil.sub); // sub = ID
       }
 
     });
   }
 
-  cargarPedidos(email: string) {
-    this.pedidosService.obtenerPedidosPorUsuario(email).subscribe({
+  cargarPedidos(id: string) {
+    this.pedidosService.obtenerPedidosPorUsuario(id).subscribe({
       next: (datos) => {
         this.pedidos.set(datos); // Guardamos los pedidos en la señal
         console.log('Pedidos recuperados:', datos);

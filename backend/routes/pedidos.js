@@ -71,6 +71,31 @@ router.get('/:usuario_id', async (req, res) => {
             'SELECT * FROM pedidos WHERE usuario_id = ? ORDER BY fecha DESC',
             [req.params.usuario_id]
         );
+
+        if (pedidos.length === 0) {
+            return res.json([]);
+        }
+
+        // 3. Rellenar los productos de cada pedido
+        // (Hacemos un bucle asíncrono para buscar los detalles de cada pedido)
+        for (let i = 0; i < pedidos.length; i++) {
+            const pedido = pedidos[i];
+
+            // Buscamos las camisetas O cajas asociadas a este pedido
+            // Hacemos JOIN con 'camisetas' para sacar el nombre
+            const [productos] = await db.query(
+                `SELECT dp.*, c.nombre, c.imagen 
+                 FROM detalles_pedido dp
+                 LEFT JOIN camisetas c ON dp.camiseta_id = c.id
+                 WHERE dp.pedido_id = ?`,
+                [pedido.id]
+            );
+
+            // Añadimos la propiedad 'productos' al objeto pedido
+            // Esto es lo que espera tu HTML: @for (item of pedido.productos)
+            pedido.productos = productos;
+        }
+
         res.json(pedidos);
     } catch (error) {
         res.status(500).json({ error: error.message });

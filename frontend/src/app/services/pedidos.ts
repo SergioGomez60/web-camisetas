@@ -12,9 +12,9 @@ export class PedidosService {
     return this.http.post(this.apiUrl, pedido);
   }
 
-  obtenerPedidosPorUsuario(email: string): Observable<any[]> {
-    // Aquí asumimos que tu backend recibe el email como parámetro en la URL
-    // Ejemplo: http://localhost:3000/pedidos/usuario/sergio@gmail.com
-    return this.http.get<any[]>(`${this.apiUrl}/usuario/${email}`);
+  obtenerPedidosPorUsuario(id: string): Observable<any[]> {
+    // Enviamos directamente a /pedidos/:id
+    // Nota: encodeURIComponent es bueno por si el ID de auth0 tiene caracteres raros
+    return this.http.get<any[]>(`${this.apiUrl}/${encodeURIComponent(id)}`);
   }
 }
