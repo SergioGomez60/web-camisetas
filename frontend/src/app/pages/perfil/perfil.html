@@ -7,8 +7,12 @@
 
 <div class="contenido">
     @if(opcionSeleccionada === "Perfil"){
-        <div>
-
+        <div class="info-perfil">
+            <h3>Nombre: {{ user()?.name }}</h3>
+        
+            <h3>Email: {{ user()?.email }}</h3>
+        
+            <h3>Usuario: {{ user()?.nickname }}</h3>
         </div>
     }
 
@@ -19,3 +23,5 @@
         </div>
     }
 </div>
+
+<app-footer></app-footer>
