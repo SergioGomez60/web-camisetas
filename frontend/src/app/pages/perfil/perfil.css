@@ -1,0 +1,17 @@
+.perfil-pedidos{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.enlaces{
+    cursor: pointer;
+    border: 2px solid black;
+    padding: 15px;
+    border-radius:20px;
+}
+
+.enlaces.activo{
+    background-color: #7ED957;
+}

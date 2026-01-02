@@ -1,1 +1,21 @@
-<p>perfil works!</p>
+<app-header></app-header>
+
+<div class="perfil-pedidos">
+    <h2 class="enlaces" (click)="seleccionar('Perfil')" [class.activo]="opcionSeleccionada === 'Perfil'">Perfil</h2>
+    <h2 class="enlaces" (click)="seleccionar('Pedidos')" [class.activo]="opcionSeleccionada === 'Pedidos'">Pedidos</h2>
+</div>
+
+<div class="contenido">
+    @if(opcionSeleccionada === "Perfil"){
+        <div>
+
+        </div>
+    }
+
+
+    @if(opcionSeleccionada === "Pedidos"){
+        <div>
+
+        </div>
+    }
+</div>
