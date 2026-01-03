@@ -210,7 +210,7 @@ navegarYcerrarMenu() {
       }
 
       if ( seccion.nombre === 'Camisetas Retro') {
-          this.router.navigate(['/camisetas/:categoria']); 
+          this.router.navigate(['/camisetas/retro']); 
           this.navegarYcerrarMenu();        
           return;                           
       }

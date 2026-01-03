@@ -7,7 +7,11 @@
     }
     <img routerLink="/" class="logo" src="assets/logo-camis.png" alt="logo web">
     <div class="lupa-carrito-login">
-      <img (click)="login()" id="login" src="assets/login.png" alt="login">
+      @if(isAuthenticated()){
+        <img [routerLink]="['/perfil']" id="login" src="assets/login.png" alt="login">
+      }@else{
+        <img (click)="login()" id="login" src="assets/login.png" alt="login">
+      }      
       <img class="lupa" src="assets/lupa.png" alt="lupa" (click)="toggleBuscador()">
       <img class="carrito" src="assets/carrito.png" alt="carrito" (click)="toggleCarrito()"> 
     </div> 

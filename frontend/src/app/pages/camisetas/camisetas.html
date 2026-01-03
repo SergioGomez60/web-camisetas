@@ -1,8 +1,17 @@
 <app-header></app-header>
 <div class="container">
-  <h1>Camisetas del {{ nombreEquipoActual }}</h1>
+  @if(nombreEquipoActual === 'Camisetas RETRO'){
+    <h1>Camisetas Retro</h1>
+  }@else{
+    <h1>Camisetas del {{ nombreEquipoActual }}</h1>
+  }
   @if(camisetas.length >= 1){
-    <h4>{{ camisetas.length }} resultados para "Camisetas del {{ nombreEquipoActual }}"</h4>
+    @if(nombreEquipoActual === 'Camisetas RETRO'){
+      <h4>{{ camisetas.length }} resultados para "Camisetas Retro"</h4>
+    }@else{
+      <h4>{{ camisetas.length }} resultados para "Camisetas del {{ nombreEquipoActual }}"</h4>
+    }
+
   }
 
   @if (error) {

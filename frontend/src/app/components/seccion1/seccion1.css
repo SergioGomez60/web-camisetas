@@ -91,7 +91,7 @@
 
 
 /* ----------- PORTATIL ----------- */
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1400px) {
     .texto1{
         font-size: 40px;
     }
@@ -132,7 +132,7 @@
 
 
 /* ----------- MONITOR ----------- */
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1600px) {
     .texto1{
         font-size: 60px;
     }

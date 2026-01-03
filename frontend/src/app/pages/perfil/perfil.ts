@@ -42,5 +42,9 @@ export class Perfil {
     this.opcionSeleccionada = opcion;
   }
 
+  logout(){
+    this.authService.logout({logoutParams: { returnTo: window.location.origin }});
+  }
+
   
 }

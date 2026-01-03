@@ -101,7 +101,7 @@
 
 
 /* ----------- PORTATIL ----------- */
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1400px) {
   .reseña {
     max-width: 600px;
   }
@@ -127,7 +127,7 @@
 
 
 /* ----------- MONITOR ----------- */
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1600px) {
   .reseña {
     max-width: 900px;
     height: 300px;

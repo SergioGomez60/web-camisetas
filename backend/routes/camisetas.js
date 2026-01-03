@@ -36,7 +36,8 @@ router.get("/categoria/:categoria", async (req,res) => {
     const categoria = req.params.categoria;
 
     try{
-        const [rows] = await db.query('SELECT * FROM camisetas WHERE categoria = ?', [categoria])
+        const [rows] = await db.query('SELECT * FROM camisetas WHERE categoria = ?', [categoria]);
+        res.json(rows);
     }catch (error){
         res.status(500).json({ error: error.message });
     }
