@@ -209,6 +209,12 @@ navegarYcerrarMenu() {
           return;                           
       }
 
+      if ( seccion.nombre === 'Camisetas Retro') {
+          this.router.navigate(['/camisetas/:categoria']); 
+          this.navegarYcerrarMenu();        
+          return;                           
+      }
+
       this.secciones.forEach(s => { if (s !== seccion) s.abierta = false; });
       seccion.abierta = !seccion.abierta;
   }

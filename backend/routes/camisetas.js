@@ -32,6 +32,17 @@ router.get("/detalle/:id", async (req, res) => {
 });
 
 
+router.get("/categoria/:categoria", async (req,res) => {
+    const categoria = req.params.categoria;
+
+    try{
+        const [rows] = await db.query('SELECT * FROM camisetas WHERE categoria = ?', [categoria])
+    }catch (error){
+        res.status(500).json({ error: error.message });
+    }
+})
+
+
 /**
  * Obtener todas las camisetas de un equipo por nombre
  * Ejemplo: /camisetas/equipo/Barcelona
@@ -53,7 +64,8 @@ router.get("/:nombreEquipo", async (req,res) => {
     console.error(err);
     res.status(500).json({ error: 'Error obteniendo camisetas' });
     }
-})
+});
+
 
 
 export default router;

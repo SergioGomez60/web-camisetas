@@ -11,6 +11,7 @@ export const routes: Routes = [
     {path: "", component:Inicio },
     {path:"equipo/:id", component:Camisetas},
     {path:"camiseta/:id/:equipacion", component:CamisetaComponent},
+    { path: "camisetas/:categoria", component: Camisetas },
     {path: "cajas", component:Cajas},
     { path: 'caja/:id/:nombre', component: CajaInfo },
     { path: 'carrito', component: CarritoPage },

@@ -36,4 +36,8 @@ export class CamisetasService {
   getCamisetaPorId(id: number): Observable<Camiseta> {
     return this.http.get<Camiseta>(`${this.apiUrl}/detalle/${id}`);
   }
+
+  getCamisetasPorCategoria(categoria: string): Observable<Camiseta[]> {
+    return this.http.get<Camiseta[]>(`${this.apiUrl}/categoria/${categoria}`);
+  }
 }
