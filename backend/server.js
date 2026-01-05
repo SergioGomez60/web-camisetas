@@ -8,7 +8,12 @@ import pagosRoutes from './routes/pagos.js';
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: '*', // O pon la URL de tu frontend en Vercel: 'https://tu-web.vercel.app'
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
 // Rutas
@@ -20,6 +25,7 @@ app.use('/pagos', pagosRoutes)
 
 // Puerto
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor Node.js en http://localhost:${PORT}`);
+// Añadimos '0.0.0.0' para que Render exponga el puerto correctamente
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
 });

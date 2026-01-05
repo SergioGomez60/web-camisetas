@@ -16,6 +16,6 @@ export const db = mysql.createPool({
   queueLimit: 0,
   // Aiven requiere SSL, esta opción asegura la conexión segura
   ssl: {
-    rejectUnauthorized: true
+    rejectUnauthorized: false
   }
 });
