@@ -19,7 +19,7 @@ app.use('/pedidos', pedidosRoutes);
 app.use('/pagos', pagosRoutes)
 
 // Puerto
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor Node.js en http://localhost:${PORT}`);
 });
