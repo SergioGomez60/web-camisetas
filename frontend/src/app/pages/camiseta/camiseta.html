@@ -25,6 +25,10 @@
 
 <p class="info-camiseta">{{ informacion_camiseta }}</p>
 
+@if (!error && camiseta.length === 0) {
+    <p>Cargando camiseta...</p>
+  }
+
 
 
 

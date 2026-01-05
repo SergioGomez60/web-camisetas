@@ -4,14 +4,6 @@ import dotenv from 'dotenv';
 // Carga las variables del archivo .env si estamos en local
 dotenv.config();
 
-// --- AÑADE ESTO (El Chivato) ---
-console.log("---- INTENTO DE CONEXIÓN A BASE DE DATOS ----");
-console.log("HOST:", process.env.DB_HOST);
-console.log("PORT:", process.env.DB_PORT);
-console.log("USER:", process.env.DB_USER);
-console.log("NAME:", process.env.DB_NAME);
-console.log("---------------------------------------------");
-// -------------------------------
 
 export const db = mysql.createPool({
   host: process.env.DB_HOST,
