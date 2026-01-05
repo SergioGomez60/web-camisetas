@@ -15,7 +15,7 @@ export interface ItemCarrito extends Camiseta {
 export class CarritoService {
   private http = inject(HttpClient);
   private auth = inject(AuthService);
-  private apiUrl = 'http://localhost:3000/carrito';
+  private apiUrl = 'https://web-camisetas.onrender.com/carrito';
 
   // Señal principal
   private carritoSignal = signal<ItemCarrito[]>([]);

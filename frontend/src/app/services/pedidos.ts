@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export class PedidosService {
   private http = inject(HttpClient);
   // Asegúrate de que esta URL coincida con tu backend
-  private apiUrl = 'http://localhost:3000/pedidos'; 
+  private apiUrl = 'https://web-camisetas.onrender.com/pedidos'; 
 
   crearPedido(pedido: any): Observable<any> {
     return this.http.post(this.apiUrl, pedido);

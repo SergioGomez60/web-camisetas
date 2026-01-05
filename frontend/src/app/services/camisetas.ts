@@ -17,7 +17,7 @@ export interface Camiseta {
 export class CamisetasService {
   private http = inject(HttpClient);
   // URL base de tu servidor Node.js (ajusta si es necesario)
-  private apiUrl = 'http://localhost:3000/camisetas'; 
+  private apiUrl = 'https://web-camisetas.onrender.com/camisetas'; 
 
   /**
    * Obtiene camisetas filtradas por el nombre exacto del equipo.
