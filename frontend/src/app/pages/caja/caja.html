@@ -1,32 +1,38 @@
 <app-header></app-header>
 
 <div class="container">
-    <img [src]="caja?.imagen" alt="imagen caja">
-    <h3>{{ caja?.nombre }}</h3> 
-    <p class="precio">{{ caja?.precio }}€</p>
-
-
-    @if(caja?.tallas && caja!.tallas!.length > 0) {
-        <div class="selector-tallas">
-            <p class="texto-tallas"><strong>Tallas:</strong></p>
-            <div class="grid-tallas">
-                @for (talla of caja!.tallas; track $index) {
-                    <button class="btn-talla" 
-                            [class.seleccionada]="talla === tallaSeleccionada" 
-                            (click)="seleccionarTalla(talla)">
-                        {{ talla }}
-                    </button>
-                }
-            </div>
+    @if (loading) {
+        <div class="cargando-caja">
+            <p>⏳ Cargando cajas...</p>
         </div>
-    } @else {
-        <p class="agotado">🚫 Agotado temporalmente</p>
-    }
+    } @else if (caja) {
+        <img [src]="caja.imagen" alt="imagen caja">
+        <h3>{{ caja.nombre }}</h3> 
+        <p class="precio">{{ caja.precio }}€</p>
 
-    <button class="anadir-carrito" (click)="agregarAlCarrito()">Añadir al carrito 🛒</button>
+        @if(caja.tallas && caja.tallas.length > 0) {
+            <div class="selector-tallas">
+                <p class="texto-tallas"><strong>Tallas:</strong></p>
+                <div class="grid-tallas">
+                    @for (talla of caja.tallas; track $index) {
+                        <button class="btn-talla" 
+                                [class.seleccionada]="talla === tallaSeleccionada" 
+                                (click)="seleccionarTalla(talla)">
+                            {{ talla }}
+                        </button>
+                    }
+                </div>
+            </div>
+        } @else {
+            <p class="agotado">🚫 Agotado temporalmente</p>
+        }
+
+        <button class="anadir-carrito" (click)="agregarAlCarrito()">Añadir al carrito 🛒</button>
+        
+        <p class="info-caja">{{ caja.descripcion }}</p>
+    } @else {
+        <p>No se encontró la caja solicitada.</p>
+    }
 </div>
 
-<p class="info-caja">{{ caja?.descripcion }}</p>
-
 <app-footer></app-footer>
-

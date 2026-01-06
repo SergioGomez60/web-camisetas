@@ -1,8 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Altura mínima del 100% de la ventana */
+}
+
 .container{
     display: flex;
     flex-direction: column;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     gap: 8px;
+    flex: 1;
 }
 
 .container img{

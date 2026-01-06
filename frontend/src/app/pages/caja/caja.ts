@@ -17,15 +17,23 @@ export class CajaInfo implements OnInit{
 
   caja: Caja | undefined;
   tallaSeleccionada: string = '';
+  loading: boolean = true;
 
   ngOnInit() {
     // Leemos el ID de la URL (ej: /caja/1)
     const id = this.route.snapshot.paramMap.get('id');
     
     if (id) {
+      this.loading = true;
       this.cajasService.getCajaPorId(Number(id)).subscribe({
-        next: (data) => this.caja = data,
-        error: (err) => console.error('Error:', err)
+        next: (data) => {
+          this.caja = data;
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error('Error:', err);
+          this.loading = false;
+        }
       });
     }
   }
