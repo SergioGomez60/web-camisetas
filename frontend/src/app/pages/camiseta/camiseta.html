@@ -22,7 +22,7 @@
 
     <button class="anadir-carrito" (click)="agregarAlCarrito()">Añadir al carrito 🛒</button>
 
-    @if (!error && camiseta.length === 0) {
+    @if (!error && !camiseta) {
     <p>Cargando camiseta...</p>
   }
 </div>
