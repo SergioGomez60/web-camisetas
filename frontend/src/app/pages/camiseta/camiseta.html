@@ -2,38 +2,41 @@
 
 <div class="container">
 
-  @if (error) {
-    <p>Hubo un error al cargar el producto.</p>
-  }
+    @if (loading) {
+        <div class="mensaje-carga">
+            <p>⏳ Cargando camiseta...</p>
+        </div>
+    } 
+    
+    @else if (camiseta) {
+        <img [src]="camiseta.imagen_principal" alt="imagen">
+        <h3>{{ camiseta.descripcion }}</h3>
+        <p class="precio">{{ camiseta.precio }}€</p>
 
-  @else if (camiseta) {
-      <img [src]="camiseta.imagen_principal" alt="imagen">
-      <h3>{{ camiseta.descripcion }}</h3>
-      <p class="precio">{{ camiseta.precio }}€</p>
+        @if(camiseta.tallas && camiseta.tallas.length > 0) {
+            <div class="selector-tallas">
+                <p class="texto-tallas"><strong>Tallas:</strong></p>
+                <div class="grid-tallas">
+                    @for (talla of camiseta.tallas; track $index) {
+                        <button class="btn-talla" 
+                                [class.seleccionada]="talla === tallaSeleccionada" 
+                                (click)="seleccionarTalla(talla)">
+                            {{ talla }}
+                        </button>
+                    }
+                </div>
+            </div>
+        } @else {
+            <p class="agotado">🚫 Agotado temporalmente</p>
+        }
 
-      @if(camiseta.tallas && camiseta.tallas.length > 0) {
-          <div class="selector-tallas">
-              <p class="texto-tallas"><strong>Tallas:</strong></p>
-              <div class="grid-tallas">
-                  @for (talla of camiseta.tallas; track $index) {
-                      <button class="btn-talla" 
-                              [class.seleccionada]="talla === tallaSeleccionada" 
-                              (click)="seleccionarTalla(talla)">
-                          {{ talla }}
-                      </button>
-                  }
-              </div>
-          </div>
-      } @else {
-          <p class="agotado">🚫 Agotado temporalmente</p>
-      }
-
-      <button class="anadir-carrito" (click)="agregarAlCarrito()">Añadir al carrito 🛒</button>
-      <p class="info-camiseta">{{ informacion_camiseta }}</p>
-  }
-
-  @else {
-    <p>Cargando camiseta...</p>
+        <button class="anadir-carrito" (click)="agregarAlCarrito()">Añadir al carrito 🛒</button>
+        
+        <p class="info-camiseta">{{ informacion_camiseta }}</p>
+    } 
+    
+    @else {
+        <p>⚠️ No se pudo cargar la información de la camiseta.</p>
     }
 
 </div>
