@@ -1,3 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Altura mínima del 100% de la ventana */
+}
+
 .container{
     margin-top: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -6,6 +12,7 @@
     margin-left: auto;   /* Centra la caja en la pantalla */
     margin-right: auto;    
     max-width: 100%;
+    flex: 1;
 }
 
 .container h1{
