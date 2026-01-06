@@ -21,13 +21,13 @@
     }
 
     <button class="anadir-carrito" (click)="agregarAlCarrito()">Añadir al carrito 🛒</button>
+
+    @if (!error && camiseta.length === 0) {
+    <p>Cargando camiseta...</p>
+  }
 </div>
 
 <p class="info-camiseta">{{ informacion_camiseta }}</p>
-
-@if (!error && camiseta.length === 0) {
-    <p>Cargando camiseta...</p>
-  }
 
 
 
