@@ -43,6 +43,11 @@
     max-width: 200px;
 }
 
+.cargando-cajas{
+    padding: 10px;
+    text-align: center;
+}
+
 .cajas{
     display: grid;
     grid-template-columns: 180px 180px;
